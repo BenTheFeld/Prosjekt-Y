@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgwuaqnkxrjk5"]
+
+[ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scenes/alexplayer.gd" id="1_jj23w"]
+[ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
+
+[node name="alexplayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_jj23w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3vgc6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0703125, 0.0703125)
+texture = ExtResource("2_qt07y")
