@@ -14,5 +14,5 @@ func _process(delta: float) -> void:
 	print(\"bob\")
 "
 
-[node name="game" type="Node2D"]
+[node name="benjamin" type="Node2D"]
 script = SubResource("GDScript_u8vuu")
