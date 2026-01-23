@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgwuaqnkxrjk5"]
+[gd_scene load_steps=5 format=3 uid="uid://cgwuaqnkxrjk5"]
 
-[ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scenes/alexplayer.gd" id="1_jj23w"]
+[ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
+[ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
 
@@ -21,6 +22,14 @@ texture = ExtResource("2_qt07y")
 wait_time = 0.2
 
 [node name="dash_again_timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_bjs4x")]
+offset_left = 117.0
+offset_top = 111.0
+offset_right = 357.0
+offset_bottom = 127.0
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
