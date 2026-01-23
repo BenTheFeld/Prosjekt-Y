@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://tx8s108qyk0l"]
+
+[ext_resource type="Script" uid="uid://c5b6i6u1sagl3" path="res://scripts/enemyMovement.gd" id="1_18e2m"]
+[ext_resource type="PackedScene" uid="uid://byyxue4c2gjg4" path="res://scenes/enemy.tscn" id="2_4mnpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yjij"]
+
+[node name="Ghost" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_18e2m")
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("2_4mnpn")]
+rotation = 3.1415925
+scale = Vector2(0.506173, -0.49200016)
+autoplay = "down"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+scale = Vector2(8.223064, 8.223064)
+shape = SubResource("RectangleShape2D_1yjij")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

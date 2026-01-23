@@ -4,9 +4,16 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 1200.0
+var health = 0
 
 var dashing = false
 var can_dash = true
+@onready var healthbar = $CanvasLayer/HealthBar
+
+func _ready():
+	health = 100
+	healthbar.init_health(health)
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
