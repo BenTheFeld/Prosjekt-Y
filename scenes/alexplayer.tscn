@@ -16,3 +16,11 @@ shape = SubResource("CapsuleShape2D_3vgc6")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0703125, 0.0703125)
 texture = ExtResource("2_qt07y")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_again_timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
