@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
 
-[node name="alexplayer" type="CharacterBody2D"]
+[node name="alexplayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jj23w")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tx8s108qyk0l"]
 
-[ext_resource type="Script" uid="uid://c5b6i6u1sagl3" path="res://scripts/enemyMovement.gd" id="1_18e2m"]
-[ext_resource type="PackedScene" uid="uid://byyxue4c2gjg4" path="res://scenes/enemy.tscn" id="2_4mnpn"]
+[ext_resource type="Script" uid="uid://w4oecen3nhbs" path="res://scenes/enemyMovement.gd" id="1_18e2m"]
+[ext_resource type="PackedScene" uid="uid://byyxue4c2gjg4" path="res://assets/enemy.tscn" id="2_4mnpn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yjij"]
 

@@ -1,0 +1,147 @@
+[gd_scene load_steps=20 format=3 uid="uid://byyxue4c2gjg4"]
+
+[ext_resource type="Texture2D" uid="uid://dcdi042y4si4x" path="res://assets/IDLE.png" id="1_5uy6h"]
+[ext_resource type="Texture2D" uid="uid://bp1vojuj3vyvm" path="res://assets/ghost3.png" id="1_md0e3"]
+[ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="2_4ra3w"]
+[ext_resource type="Script" uid="uid://2cmm2ohf1otx" path="res://assets/enemy-kopi.gd" id="2_5uy6h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
+atlas = ExtResource("1_5uy6h")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwavj"]
+atlas = ExtResource("1_5uy6h")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1ycm"]
+atlas = ExtResource("1_5uy6h")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shcg2"]
+atlas = ExtResource("1_5uy6h")
+region = Rect2(243, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nenq2"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(0, 108, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md484"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(78, 108, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipns3"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(156, 108, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qclf"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(0, 216, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8i8w"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(78, 216, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otmr2"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(156, 216, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtq4b"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(0, 324, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0cyh"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(78, 324, 78, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
+atlas = ExtResource("1_md0e3")
+region = Rect2(156, 324, 78, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s1ycm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4w8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwavj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1ycm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shcg2")
+}],
+"loop": true,
+"name": &"down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nenq2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md484")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipns3")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8i8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otmr2")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtq4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0cyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0wcc")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 20.0
+height = 54.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["enemy"]]
+scale = Vector2(-1.02856, 1)
+sprite_frames = SubResource("SpriteFrames_s1ycm")
+animation = &"down"
+frame_progress = 0.986666
+script = ExtResource("2_5uy6h")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-7, 3)
+shape = SubResource("CapsuleShape2D_4ra3w")
+debug_color = Color(0.9999998, 0.002043776, 0.09595644, 0.41960785)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_4ra3w")]
+offset_left = 30.139221
+offset_top = -48.0
+offset_right = 105.13922
+offset_bottom = -40.0
+scale = Vector2(-1.0399988, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
