@@ -45,7 +45,6 @@ func _physics_process(delta: float) -> void:
 		
 	if !is_on_floor() and was_on_floor and !jumping: #starts coyote timer after starting a fall
 		coyote_timer.start()
-		print(10)
 		
 	if is_on_floor():
 		can_jump = true
@@ -78,8 +77,7 @@ func _on_dash_again_timer_timeout() -> void:
 	can_dash = true
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
-		print("Damaged")   
+	if area.is_in_group("enemy"):   
 		timer.start()
 		take_damage(10)
 		
@@ -89,4 +87,3 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func _on_coyote_timer_timeout():
 	can_jump = false
-	print("timeout")

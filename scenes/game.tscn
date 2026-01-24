@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://pu0aycys3k6c"]
+
+[ext_resource type="PackedScene" uid="uid://cclol5t78ta13" path="res://scenes/map.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://cgwuaqnkxrjk5" path="res://scenes/alexplayer.tscn" id="2_lnu2h"]
+
+[node name="Game" type="Node2D"]
+
+[node name="map" parent="." instance=ExtResource("1_yqjtg")]
+
+[node name="alexplayer" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(148, -5)
+
+[node name="Camera2D" type="Camera2D" parent="alexplayer"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
