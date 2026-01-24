@@ -5,7 +5,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yjij"]
 
-[node name="Ghost" type="CharacterBody2D" groups=["enemy"]]
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_18e2m")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_4mnpn")]

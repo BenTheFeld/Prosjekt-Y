@@ -7991,5 +7991,5 @@ color = Color(1, 0.5803922, 0, 1)
 energy = 2.16
 texture = SubResource("GradientTexture2D_2klcf")
 
-[node name="Ghost" parent="." instance=ExtResource("5_2klcf")]
-position = Vector2(417, -51)
+[node name="enemy" parent="." instance=ExtResource("5_2klcf")]
+position = Vector2(389, -63)

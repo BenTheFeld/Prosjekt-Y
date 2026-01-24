@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgwuaqnkxrjk5"]
+[gd_scene load_steps=6 format=3 uid="uid://cgwuaqnkxrjk5"]
 
 [ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
@@ -6,13 +6,12 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjs4x"]
+
 [node name="alexplayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jj23w")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_3vgc6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0703125, 0.0703125)
@@ -31,5 +30,16 @@ offset_top = 111.0
 offset_right = 357.0
 offset_bottom = 127.0
 
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_3vgc6")
+
+[node name="groundcollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bjs4x")
+
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

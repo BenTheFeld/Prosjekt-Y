@@ -9,6 +9,7 @@ var health = 0
 var dashing = false
 var can_dash = true
 @onready var healthbar = $CanvasLayer/HealthBar
+@onready var timer = $Timer 
 
 func _ready():
 	health = 100
@@ -47,6 +48,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func take_damage(amount):
+	health = max(0, health - amount)
+	healthbar._set_health(health)
+	if health <= 0:
+		get_tree().change_scene_to_file("res://scenes/map.tscn")
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false 
@@ -54,3 +60,13 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_again_timer_timeout() -> void:
 	can_dash = true
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		print("Damaged")   
+		timer.start()
+		take_damage(10)
+		
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("enemy"):
+		timer.stop()
