@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bj2mdigjphphv" path="res://assets/ch_02_world_building_foundations/forgotten_forest_example_tileset.png" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://dq710yoqtlc3y" path="res://assets/ch_02_world_building_foundations/autotile_template.png" id="2_gldc4"]
 [ext_resource type="Texture2D" uid="uid://cb47r6s0jwriq" path="res://assets/tileset.png" id="3_0cso3"]
-[ext_resource type="PackedScene" path="res://scenes/alexplayer.tscn" id="3_gldc4"]
-[ext_resource type="PackedScene" path="res://assets/enemyY.tscn" id="5_2klcf"]
+[ext_resource type="PackedScene" uid="uid://cgwuaqnkxrjk5" path="res://scenes/alexplayer.tscn" id="3_gldc4"]
+[ext_resource type="PackedScene" uid="uid://tx8s108qyk0l" path="res://assets/enemyY.tscn" id="5_2klcf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nakos"]
 texture = ExtResource("3_0cso3")
