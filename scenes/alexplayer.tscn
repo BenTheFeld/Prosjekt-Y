@@ -17,10 +17,10 @@ script = ExtResource("1_jj23w")
 scale = Vector2(0.0703125, 0.0703125)
 texture = ExtResource("2_qt07y")
 
-[node name="dash_timer" type="Timer" parent="."]
+[node name="dash_duration_timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="dash_again_timer" type="Timer" parent="."]
+[node name="dash_cooldown_timer" type="Timer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -44,7 +44,7 @@ shape = SubResource("CapsuleShape2D_bjs4x")
 wait_time = 0.3
 one_shot = true
 
-[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="dash_duration_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_again_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]

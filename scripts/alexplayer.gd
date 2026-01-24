@@ -28,8 +28,8 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
-		$dash_timer.start()
-		$dash_again_timer.start()
+		$dash_duration_timer.start()
+		$dash_cooldown_timer.start()
 		can_dash = false
 	
 	# Handle jump.
