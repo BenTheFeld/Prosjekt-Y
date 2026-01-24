@@ -30,7 +30,7 @@ offset_top = 111.0
 offset_right = 357.0
 offset_bottom = 127.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="damage_timer" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 

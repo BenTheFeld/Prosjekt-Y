@@ -13,7 +13,7 @@ var can_jump = true
 var was_on_floor = true
 var jumping = false
 @onready var healthbar = $CanvasLayer/HealthBar
-@onready var timer = $Timer 
+@onready var damage_timer = $damage_timer
 @onready var coyote_timer: Timer = $coyote_timer
 
 func _ready():
@@ -34,18 +34,22 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle jump.
 	
+	#saves if the player was on the floor or not in the last frame
 	was_on_floor = is_on_floor()
 	
 	move_and_slide()
-
+	
+	#jump action
 	if Input.is_action_just_pressed("jump") and can_jump:
 		velocity.y = JUMP_VELOCITY
 		jumping = true
 		can_jump = false
-		
-	if !is_on_floor() and was_on_floor and !jumping: #starts coyote timer after starting a fall
+	
+	#starts coyote timer after falling of a ledge
+	if !is_on_floor() and was_on_floor and !jumping:
 		coyote_timer.start()
-		
+	
+	#resets jump status after landing in the floor
 	if is_on_floor():
 		can_jump = true
 		jumping = false
@@ -78,12 +82,13 @@ func _on_dash_again_timer_timeout() -> void:
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy"):   
-		timer.start()
+		damage_timer.start()
 		take_damage(10)
 		
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("enemy"):
-		timer.stop()
+		damage_timer.stop()
 
+#when the coyote timer runs out stops the player from jumping
 func _on_coyote_timer_timeout():
 	can_jump = false
