@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 200.0
 const JUMP_VELOCITY = -600.0
-const DASH_SPEED = 800.0
+const DASH_SPEED = 400.0
 const coyote_time = 0.3
 const max_jump_amount = 2
 
@@ -32,21 +32,24 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("walk_left", "walk_right")
 	
+	#records the last direction
 	if direction != 0:
 		last_direction = direction
-		
+	
+	#points the character to the right when going right
 	if last_direction > 0:
 		hands_sprite.flip_h = true
-	
+		
+	#points the character to the left when going left
 	if last_direction < 0:
 		hands_sprite.flip_h = false
 		
+	#triggers dashes
 	if dashing:
-		velocity.x = last_direction * DASH_SPEED
+		velocity.x = last_direction * (SPEED + DASH_SPEED)
 	else:
 		velocity.x = direction * SPEED
 
-	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		$dash_duration_timer.start()

@@ -27,6 +27,7 @@ texture = ExtResource("3_8wtvl")
 wait_time = 0.2
 
 [node name="dash_cooldown_timer" type="Timer" parent="."]
+wait_time = 0.6
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
