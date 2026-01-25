@@ -3,9 +3,10 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -600.0
-const DASH_SPEED = 400.0
-const coyote_time = 0.3
-const max_jump_amount = 2
+const DASH_SPEED = 500.0 + SPEED
+const COYOTE_TIME = 0.3
+const MAX_JUMP_AMOUNT = 2
+const MAX_DASH_AMOUNT = 1
 
 var health = 0
 var last_direction = 1
@@ -15,7 +16,8 @@ var coyote = false
 var was_on_floor = true
 var was_on_wall
 var jumping = false
-var jump_amount = max_jump_amount
+var jump_amount = MAX_JUMP_AMOUNT
+var dash_amount = MAX_DASH_AMOUNT
 @onready var healthbar = $CanvasLayer/HealthBar
 @onready var damage_timer = $damage_timer
 @onready var coyote_timer: Timer = $coyote_timer
@@ -25,12 +27,13 @@ var jump_amount = max_jump_amount
 func _ready():
 	health = 100
 	healthbar.init_health(health)
-	coyote_timer.set_wait_time(coyote_time) #assigns the coyote timers duration
+	coyote_timer.set_wait_time(COYOTE_TIME) #assigns the coyote timers duration
 	
 func _physics_process(delta: float) -> void:
 	
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("walk_left", "walk_right")
+	var mouse_direction = get_local_mouse_position().normalized()
 	
 	#records the last direction
 	if direction != 0:
@@ -43,18 +46,23 @@ func _physics_process(delta: float) -> void:
 	#points the character to the left when going left
 	if last_direction < 0:
 		hands_sprite.flip_h = false
-		
-	#triggers dashes
-	if dashing:
-		velocity.x = last_direction * (SPEED + DASH_SPEED)
-	else:
+	
+	#moves player
+	if direction and !dashing:
 		velocity.x = direction * SPEED
+	else: 
+		velocity.x = move_toward(velocity.x, 0, 40)
 
-	if Input.is_action_just_pressed("dash") and can_dash:
+	#triggers dashes
+	if Input.is_action_just_pressed("dash") and can_dash and dash_amount > 0:
+		#velocity.x = last_direction * DASH_SPEED
+		dash_amount -= 1
+		velocity = mouse_direction * DASH_SPEED
 		dashing = true
+		can_dash = false
 		$dash_duration_timer.start()
 		$dash_cooldown_timer.start()
-		can_dash = false
+		
 	
 	# Handle jump.
 	
@@ -69,15 +77,20 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		jumping = false
 		coyote_timer.stop()
-		jump_amount = max_jump_amount
+		jump_amount = MAX_JUMP_AMOUNT
+		dash_amount = MAX_DASH_AMOUNT
 	
 	#slows the players decent when colliding with a wall
 	if is_on_wall() and last_direction == direction and !jumping:
-		velocity = get_gravity() * delta * 0.5
+		velocity = get_gravity() * 0.5
 		hands_sprite.visible = true
+		if Input.is_action_just_pressed("dash"):
+			velocity = mouse_direction * SPEED
+			print(mouse_direction * SPEED)
+			print("mouse dash")
 	else:
 		hands_sprite.visible = false
-		velocity += get_gravity() * delta
+		velocity += get_gravity()
 	
 	#when the player touches a wall they gain a jump
 	if is_on_wall_only() and !was_on_wall:
