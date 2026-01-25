@@ -2,16 +2,18 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 const DASH_SPEED = 1200.0
-const coyote_time = 0.2
+const coyote_time = 0.3
+const max_jump_amount = 2
 var health = 0
 
 var dashing = false
 var can_dash = true
-var can_jump = true
+var coyote = false
 var was_on_floor = true
 var jumping = false
+var jump_amount = max_jump_amount
 @onready var healthbar = $CanvasLayer/HealthBar
 @onready var damage_timer = $damage_timer
 @onready var coyote_timer: Timer = $coyote_timer
@@ -39,21 +41,26 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	#resets jump status after landing in the floor
+	if is_on_floor():
+		jumping = false
+		coyote_timer.stop()
+		jump_amount = max_jump_amount
+		
 	#jump action
-	if Input.is_action_just_pressed("jump") and can_jump:
-		velocity.y = JUMP_VELOCITY
-		jumping = true
-		can_jump = false
+	if Input.is_action_just_pressed("jump") and (jump_amount > 0 or is_on_floor() or coyote):
+			velocity.y = JUMP_VELOCITY
+			jumping = true
+			coyote = false
+			jump_amount -= 1
+			print("-1")
+			print(jump_amount)
 	
 	#starts coyote timer after falling of a ledge
 	if !is_on_floor() and was_on_floor and !jumping:
+		coyote = true
 		coyote_timer.start()
-	
-	#resets jump status after landing in the floor
-	if is_on_floor():
-		can_jump = true
-		jumping = false
-		coyote_timer.stop()
+		print("coyote")
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -91,4 +98,5 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 #when the coyote timer runs out stops the player from jumping
 func _on_coyote_timer_timeout():
-	can_jump = false
+	coyote = false
+	print("no coyote")
