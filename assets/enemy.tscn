@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcdi042y4si4x" path="res://assets/IDLE.png" id="1_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://bp1vojuj3vyvm" path="res://assets/ghost3.png" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="2_4ra3w"]
-[ext_resource type="Script" uid="uid://2cmm2ohf1otx" path="res://assets/enemy-kopi.gd" id="2_5uy6h"]
+[ext_resource type="Script" uid="uid://b8rkbtbextwmf" path="res://assets/enemy.gd" id="3_nyjvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("1_5uy6h")
@@ -120,7 +120,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
-radius = 20.0
+radius = 14.777864
 height = 54.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["enemy"]]
@@ -128,7 +128,7 @@ scale = Vector2(-1.02856, 1)
 sprite_frames = SubResource("SpriteFrames_s1ycm")
 animation = &"down"
 frame_progress = 0.986666
-script = ExtResource("2_5uy6h")
+script = ExtResource("3_nyjvj")
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 

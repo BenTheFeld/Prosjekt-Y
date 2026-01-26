@@ -5,15 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
+radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjs4x"]
+radius = 8.0
 
 [node name="alexplayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jj23w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
 scale = Vector2(0.0703125, 0.0703125)
 texture = ExtResource("2_qt07y")
 
@@ -31,10 +33,11 @@ offset_right = 357.0
 offset_bottom = 127.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
 shape = SubResource("CapsuleShape2D_3vgc6")
 
 [node name="groundcollider" type="CollisionShape2D" parent="."]
@@ -42,4 +45,6 @@ shape = SubResource("CapsuleShape2D_bjs4x")
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
