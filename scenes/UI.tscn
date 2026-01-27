@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs86vd7ulidus"]
+
+[ext_resource type="Texture2D" uid="uid://pto5kg16234r" path="res://assets/menubutton.png" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://1nc5403ml5od" path="res://scripts/ui.gd" id="1_x4jx1"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_x4jx1")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 1078.0
+offset_top = 19.0
+offset_right = 1128.0
+offset_bottom = 69.0
+texture_normal = ExtResource("1_nt7q6")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

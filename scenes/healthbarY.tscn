@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c77ancc8044hp"]
+[gd_scene load_steps=7 format=3 uid="uid://c77ancc8044hp"]
 
 [ext_resource type="Script" uid="uid://ckdoxsfgdpq4y" path="res://scripts/healthbar_y.gd" id="1_07jb0"]
+[ext_resource type="Texture2D" uid="uid://b1v8jgn8dexxt" path="res://assets/ch_02_world_building_foundations/level_transition.svg" id="2_jb4fl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4me2t"]
 
@@ -24,9 +25,10 @@ bg_color = Color(1, 1, 1, 1)
 z_index = 1
 offset_right = 240.0
 offset_bottom = 16.0
+scale = Vector2(1, 1.0149547)
 theme_override_styles/background = SubResource("StyleBoxEmpty_4me2t")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vii3e")
-value = 60.0
+value = 20.0
 show_percentage = false
 script = ExtResource("1_07jb0")
 
@@ -40,11 +42,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_bq16f")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8wl12")
-value = 80.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="LevelTransition2" type="Sprite2D" parent="."]
+position = Vector2(24.000004, 8)
+scale = Vector2(4, 1)
+texture = ExtResource("2_jb4fl")
+
+[node name="LevelTransition7" type="Sprite2D" parent="."]
+position = Vector2(72, 7.8821254)
+scale = Vector2(4, 1)
+texture = ExtResource("2_jb4fl")
+
+[node name="LevelTransition8" type="Sprite2D" parent="."]
+position = Vector2(120, 7.8821254)
+scale = Vector2(4, 1)
+texture = ExtResource("2_jb4fl")
+
+[node name="LevelTransition9" type="Sprite2D" parent="."]
+position = Vector2(168, 7.8821254)
+scale = Vector2(4, 1)
+texture = ExtResource("2_jb4fl")
+
+[node name="LevelTransition10" type="Sprite2D" parent="."]
+position = Vector2(216, 7.8821254)
+scale = Vector2(4, 1)
+texture = ExtResource("2_jb4fl")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

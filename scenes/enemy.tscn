@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dcdi042y4si4x" path="res://assets/IDLE.png" id="1_5uy6h"]
 [ext_resource type="Texture2D" uid="uid://bp1vojuj3vyvm" path="res://assets/ghost3.png" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="2_4ra3w"]
-[ext_resource type="Script" uid="uid://b8rkbtbextwmf" path="res://assets/enemy.gd" id="3_nyjvj"]
+[ext_resource type="Script" uid="uid://b8rkbtbextwmf" path="res://scripts/enemy.gd" id="3_nyjvj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("1_5uy6h")
@@ -124,6 +124,7 @@ radius = 14.777864
 height = 54.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" groups=["enemy"]]
+self_modulate = Color(0.29665262, 0.5089705, 1, 1)
 scale = Vector2(-1.02856, 1)
 sprite_frames = SubResource("SpriteFrames_s1ycm")
 animation = &"down"
@@ -138,6 +139,7 @@ shape = SubResource("CapsuleShape2D_4ra3w")
 debug_color = Color(0.9999998, 0.002043776, 0.09595644, 0.41960785)
 
 [node name="HealthBar" parent="." instance=ExtResource("2_4ra3w")]
+visible = false
 offset_left = 30.139221
 offset_top = -48.0
 offset_right = 105.13922

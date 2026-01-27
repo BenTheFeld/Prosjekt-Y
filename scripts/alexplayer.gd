@@ -5,14 +5,16 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DASH_SPEED = 1200.0
 var health = 0
+var can_take_damage: bool = true
 
 var dashing = false
 var can_dash = true
 @onready var healthbar = $CanvasLayer/HealthBar
 @onready var timer = $Timer 
+@onready var screenShake = get_parent()
 
 func _ready():
-	health = 100
+	health = 5
 	healthbar.init_health(health)
 
 
@@ -60,16 +62,23 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_dash_again_timer_timeout() -> void:
 	can_dash = true
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("enemy"):
-		print("Damaged")   
-		timer.start()
-		take_damage(10)
-		
 
-func _on_area_2d_area_exited(area: Area2D) -> void:
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if !can_take_damage:
+		return
 	if area.is_in_group("enemy"):
-		timer.stop()
+		print("Damaged")
+		screenShake.apply_noise_shake()
+		take_damage(1)
+		Global.healthvis = true
+		can_take_damage = false
+		timer.start()
 
 func _on_timer_timeout() -> void:
-	take_damage(20)
+	can_take_damage = true
+	take_damage(1)
+	screenShake.apply_noise_shake()   
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	timer.stop

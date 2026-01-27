@@ -4,6 +4,7 @@ extends Node
 var player_damage = 10
 var base_damage = 10
 var inventory = null
+var healthvis = false
 
 #func _ready():
 	#inventory = preload("res://inventory/playerinv.tres").duplicate()

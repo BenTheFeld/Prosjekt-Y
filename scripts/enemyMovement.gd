@@ -25,18 +25,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+#Når den kommer nærme blir isClose sann
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print("close")
-	
 	if area.is_in_group("player"):
 		isClose = true  
-		print("closeerrr")
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	print("close")
-	
-	if body.is_in_group("player"):
-		isClose = true  
-		print("closeerrr")
