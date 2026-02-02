@@ -63,11 +63,12 @@ func _on_dash_timer_timeout() -> void:
 func _on_dash_again_timer_timeout() -> void:
 	can_dash = true
 
+
+#DETTE SKAL LIMES INN 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if !can_take_damage:
 		return
 	if area.is_in_group("enemy"):
-		print("Damaged")
 		screenShake.apply_noise_shake()
 		take_damage(1)
 		Global.healthvis = true
@@ -77,8 +78,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func _on_timer_timeout() -> void:
 	can_take_damage = true
 	take_damage(1)
-	screenShake.apply_noise_shake()   
+	screenShake.apply_noise_shake()
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	timer.stop
+	pass
