@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cgwuaqnkxrjk5"]
+[gd_scene load_steps=7 format=3 uid="uid://cgwuaqnkxrjk5"]
 
 [ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
+[ext_resource type="Texture2D" uid="uid://caa0kma53wanb" path="res://assets/ch_02_world_building_foundations/Hearts.png" id="3_8wtvl"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
@@ -26,14 +27,23 @@ wait_time = 0.2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_bjs4x")]
-offset_left = 117.0
-offset_top = 111.0
-offset_right = 357.0
-offset_bottom = 127.0
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2(237, 102)
+scale = Vector2(2.3024964, 2.4299989)
+
+[node name="YehoooNy" type="Sprite2D" parent="CanvasLayer/Node2D"]
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("3_8wtvl")
+
+[node name="HealthBar" parent="CanvasLayer/Node2D" instance=ExtResource("3_bjs4x")]
+z_index = -2
+offset_left = -77.74171
+offset_top = -13.333339
+offset_right = 78.17602
+offset_bottom = 12.940419
+value = 40.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
