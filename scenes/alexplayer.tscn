@@ -44,7 +44,7 @@ offset_bottom = 12.940419
 value = 40.0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
