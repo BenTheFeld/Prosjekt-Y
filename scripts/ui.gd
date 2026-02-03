@@ -2,14 +2,37 @@ extends CanvasLayer
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var is_open = false
+
+func _ready():
+	close()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _process(delta):
+	if Input.is_action_just_pressed("pause"):
+		if is_open:
+			close()
+		else: 
+			open()
+
+func open():
+	visible = true 
+	is_open = true 
 
 
-func _on_texture_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/map.tscn")
+func close():
+	visible = false 
+	is_open = false 
+
+
+	
+
+
+func _on_button_pressed() -> void:
+	close()
+
+
+
+func _on_leave_b_pressed() -> void:
+		get_tree().quit()

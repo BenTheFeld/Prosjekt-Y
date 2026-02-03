@@ -9581,7 +9581,9 @@ sources/1 = SubResource("TileSetAtlasSource_gw3fx")
 
 [node name="map" type="Node2D"]
 script = ExtResource("1_nakos")
+NOISE_SHAKE_SPEED = 15.0
 NOISE_SHAKE_STRENGTH = 50.0
+SHAKE_DECAY_RATE = 3.0
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 

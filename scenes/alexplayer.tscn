@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
-[ext_resource type="Texture2D" uid="uid://caa0kma53wanb" path="res://assets/ch_02_world_building_foundations/Hearts.png" id="3_8wtvl"]
+[ext_resource type="Texture2D" uid="uid://dufaecv07e3rn" path="res://assets/HeartsC.png" id="3_8wtvl"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
@@ -44,6 +44,7 @@ offset_bottom = 12.940419
 value = 40.0
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 
 [node name="Area2D" type="Area2D" parent="." groups=["player"]]
