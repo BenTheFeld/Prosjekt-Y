@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgwuaqnkxrjk5"]
+[gd_scene load_steps=9 format=3 uid="uid://cgwuaqnkxrjk5"]
 
 [ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
@@ -10,6 +10,15 @@ radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjs4x"]
 radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_0cso3"]
+offsets = PackedFloat32Array(0.016587678, 0.7867299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8wtvl"]
+gradient = SubResource("Gradient_0cso3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="alexplayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -54,6 +63,13 @@ shape = SubResource("CapsuleShape2D_3vgc6")
 
 [node name="groundcollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bjs4x")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(7.6293945e-06, 0)
+scale = Vector2(2.4375, 2.71875)
+energy = 3.91
+texture = SubResource("GradientTexture2D_8wtvl")
+texture_scale = 1.7
 
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
