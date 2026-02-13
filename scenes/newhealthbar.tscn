@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://duemta1svenq2"]
+
+[ext_resource type="Script" uid="uid://cluoopme33vg6" path="res://scripts/newhealthbar.gd" id="1_2nfcq"]
+[ext_resource type="Texture2D" uid="uid://pto5kg16234r" path="res://assets/menubutton.png" id="1_a3waa"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_2nfcq")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="Menubutton2" type="Sprite2D" parent="GridContainer"]
+position = Vector2(241, 110)
+texture = ExtResource("1_a3waa")
+
+[node name="Menubutton" type="Sprite2D" parent="GridContainer"]
+position = Vector2(181, 110)
+texture = ExtResource("1_a3waa")
+
+[node name="Menubutton3" type="Sprite2D" parent="GridContainer"]
+position = Vector2(301, 110)
+texture = ExtResource("1_a3waa")
