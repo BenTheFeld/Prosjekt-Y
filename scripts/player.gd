@@ -13,7 +13,7 @@ var dashing = false
 var can_dash = true
 var coyote = false
 var was_on_floor = true
-var was_on_wall
+var was_on_wall = false
 var jumping = false
 var jump_amount = MAX_JUMP_AMOUNT
 var dash_ready = true
@@ -105,7 +105,7 @@ func _physics_process(delta: float) -> void:
 		walljumping = false
 		
 	#jump action
-	if Input.is_action_just_pressed("jump") and (jump_amount > 0 or is_on_floor() or coyote):
+	if Input.is_action_just_pressed("jump") and (jump_amount > 0 or is_on_floor() or coyote) and !walljump_ready:
 			velocity.y = JUMP_VELOCITY
 			jumping = true
 			coyote = false
