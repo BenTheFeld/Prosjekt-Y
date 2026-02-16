@@ -1,0 +1,5022 @@
+[gd_scene load_steps=83 format=3 uid="uid://c02doe8aooxrj"]
+
+[ext_resource type="Texture2D" uid="uid://c4op32icdyts" path="res://Actors/Aries/AriesSpriteSheet.svg" id="1_7p6pq"]
+[ext_resource type="Material" uid="uid://dsf0yhw3f355" path="res://Assets/Materials/Outline.tres" id="1_8x1hv"]
+[ext_resource type="Texture2D" uid="uid://it7pn7emihpn" path="res://Assets/WhiteCircle.png" id="1_nhg30"]
+[ext_resource type="PackedScene" uid="uid://cnlmmf8ti65s" path="res://Tools/Luck/RandomChance/RandomChance.tscn" id="3_05iw4"]
+[ext_resource type="PackedScene" uid="uid://c46covgnuah06" path="res://Tools/Draw/PathDraw/PathDraw.tscn" id="3_8x1hv"]
+[ext_resource type="Texture2D" uid="uid://1s6ea1lk0wnk" path="res://Assets/Star02.png" id="5_8x1hv"]
+[ext_resource type="PackedScene" uid="uid://f1wl3hfpgwbn" path="res://Systems/Spawner/Spawner.tscn" id="11_djvqu"]
+[ext_resource type="PackedScene" uid="uid://cn5hc4xlnpf7x" path="res://Actors/Aries/AriesExplosion.tscn" id="12_2408g"]
+[ext_resource type="PackedScene" uid="uid://278qqv15yusg" path="res://Tools/Time/RandomTimer/RandomTimer.tscn" id="13_uxxbu"]
+[ext_resource type="Material" uid="uid://drpjtknrb7y4i" path="res://Assets/Materials/HitFlashMaterial.tres" id="16_hsjf0"]
+[ext_resource type="Script" uid="uid://37wuraoi6oct" path="res://Systems/Combat/HitHurt/ArmorData.gd" id="17_s25f1"]
+[ext_resource type="PackedScene" uid="uid://8o33gicw21hj" path="res://Assets/Effects/ChargingEffect/ChargingEffect.tscn" id="17_vqwv6"]
+[ext_resource type="PackedScene" uid="uid://e56m6toaqlmg" path="res://Systems/Combat/HitHurt/HurtArea2D.tscn" id="19_hsjf0"]
+[ext_resource type="PackedScene" uid="uid://cqypq0f7mfab6" path="res://Systems/Combat/HitHurt/HitArea2D.tscn" id="20_05iw4"]
+[ext_resource type="PackedScene" uid="uid://b16v76sjct6ct" path="res://Assets/Effects/TrailEffect/TrailEffect.tscn" id="21_00pu2"]
+[ext_resource type="PackedScene" uid="uid://6v2u64s7rrqj" path="res://Assets/Effects/StunEffect/StunEffect.tscn" id="21_uxxbu"]
+[ext_resource type="PackedScene" uid="uid://23ffhk1sy3kp" path="res://Tools/Position/Distribute/RandomDistribute/RandomDistribute.tscn" id="22_akh4n"]
+[ext_resource type="Script" uid="uid://ddw3xiwcv6bvr" path="res://Systems/Combat/HitHurt/HitData.gd" id="22_vqwv6"]
+[ext_resource type="PackedScene" uid="uid://x76twn7sagki" path="res://Tools/Position/Reposition/Reposition2D.tscn" id="23_s25f1"]
+[ext_resource type="PackedScene" uid="uid://kn3dera5rtbx" path="res://Systems/Vision/VisionArea2D.tscn" id="24_05iw4"]
+[ext_resource type="PackedScene" uid="uid://bn38kqhj7rxn6" path="res://Systems/Combat/Aim/Aim.tscn" id="24_djvqu"]
+[ext_resource type="PackedScene" uid="uid://b25p11q38p33v" path="res://Tools/Draw/Flipper/Flipper.tscn" id="25_djvqu"]
+[ext_resource type="PackedScene" uid="uid://gn5p417ytdid" path="res://Systems/GameResource/GameResource.tscn" id="28_iyroj"]
+[ext_resource type="PackedScene" uid="uid://cahhjp8ss6na" path="res://Tools/Animation/AnimationTrigger.tscn" id="28_prljo"]
+[ext_resource type="Script" uid="uid://kix3gobv1xh7" path="res://Interface/UIPivot2D/UIPivotMarker2D.gd" id="29_c0sxx"]
+[ext_resource type="FontFile" uid="uid://b7jb47msc5w68" path="res://Interface/Fonts/Bungee/Bungee-Regular.ttf" id="30_c0sxx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vqwv6"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_rb738"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ypou4"]
+curve = SubResource("Curve_rb738")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s25f1"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 180.0
+orbit_velocity_min = -0.5
+orbit_velocity_max = 0.5
+radial_velocity_min = -200.0
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -200.0
+radial_accel_max = -40.0
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+attractor_interaction_enabled = false
+scale_min = 0.8
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_ypou4")
+
+[sub_resource type="Curve" id="Curve_myrdq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nn380"]
+curve = SubResource("Curve_myrdq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vjewq"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(60, 30, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_nn380")
+
+[sub_resource type="Curve2D" id="Curve2D_8x1hv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, -18.4069, -35.149, 12.2418, 40.0765, -3.0495, 60.0615)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_iqyfc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 0, -26.9556, -37.241, 30.549, 19.5506, -17.1245, 55.3844)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_8x1hv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/LeftEye:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/LeftEye:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Face/LeftEyeBrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Face/LeftEyeBrow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Face/LeftEyeBrow:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Face/RightEye:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, -4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Face/RightEye:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Face/RightEye:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Face/RightEyeBrow:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, -9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Face/RightEyeBrow:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Face/RightEyeBrow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Face/RightEye:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Face/LeftEye:offset")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nhg30"]
+resource_name = "idle"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/LeftEye:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(-15, -4), Vector2(-15, -4), Vector2(-15, -4), Vector2(-15, -4), Vector2(-15, -4), Vector2(-15, -4), Vector2(-15, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/LeftEye:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/LeftEye:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.240001), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.240001), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Face/LeftEyeBrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(-15, -9), Vector2(-15, -9), Vector2(-15, -4), Vector2(-15, -9), Vector2(-15, -9), Vector2(-15, -4), Vector2(-15, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Face/LeftEyeBrow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Face/LeftEyeBrow:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Face/RightEye:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(21, -4), Vector2(21, -4), Vector2(21, -4), Vector2(21, -4), Vector2(21, -4), Vector2(21, -4), Vector2(21, -4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Face/RightEye:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Face/RightEye:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.240001), Vector2(1, 1), Vector2(1, 1), Vector2(1, 0.240001), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Face/RightEyeBrow:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(21, -9), Vector2(21, -9), Vector2(21, -4), Vector2(21, -9), Vector2(21, -9), Vector2(21, -4), Vector2(21, -9)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Face/RightEyeBrow:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Face/RightEyeBrow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.81, 0.92, 1.23333, 5, 5.11, 5.42333),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Face/LeftEye:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Face/RightEye:offset")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vqwv6"]
+resource_name = "mad"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/RightEyeBrow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, -9)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/RightEyeBrow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.351643]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/RightEyeBrow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Face/LeftEyeBrow:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -9)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Face/LeftEyeBrow:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.331954]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Face/LeftEyeBrow:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Face/LeftEye:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Face/RightEye:offset")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Face/RightEye:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(21, -4)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Face/LeftEye:region_rect")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(6, 127, 13, 19)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Face/LeftEye:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-15, -4)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Face/RightEye:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Face/LeftEye:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_76uau"]
+resource_name = "stunned"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Face/RightEye:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 0.515), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Face/RightEye:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(21.2667, 3.81461)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Face/RightEyeBrow:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(20.6259, -14.1725), Vector2(21, -9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Face/RightEyeBrow:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0927409, 0.443851]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Face/LeftEyeBrow:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-15, -9), Vector2(-15.4837, -13.1237)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Face/LeftEyeBrow:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.441406, -0.114148]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Face/LeftEyeBrow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Face/LeftEye:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(-14.6396, 4.65375)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Face/LeftEye:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.335)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Face/LeftEye:offset")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7.105)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Face/RightEye:offset")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -7.25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pkvft"]
+_data = {
+&"RESET": SubResource("Animation_8x1hv"),
+&"idle": SubResource("Animation_nhg30"),
+&"mad": SubResource("Animation_vqwv6"),
+&"stunned": SubResource("Animation_76uau")
+}
+
+[sub_resource type="Curve" id="Curve_tsqpr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.502618, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bhdji"]
+curve = SubResource("Curve_tsqpr")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nf1jm"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(40, 10, 1)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 0.8
+scale_curve = SubResource("CurveTexture_bhdji")
+
+[sub_resource type="Animation" id="Animation_ssodt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_28ajw"]
+resource_name = "hurt"
+length = 0.05
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/damaged")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cfiu0"]
+_data = {
+&"RESET": SubResource("Animation_ssodt"),
+&"hurt": SubResource("Animation_28ajw")
+}
+
+[sub_resource type="Resource" id="Resource_05iw4"]
+script = ExtResource("17_s25f1")
+defense = 0
+origin = "Boss"
+metadata/_custom_type_script = "uid://37wuraoi6oct"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_104v7"]
+radius = 78.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_00pu2"]
+radius = 77.0065
+
+[sub_resource type="Resource" id="Resource_s25f1"]
+script = ExtResource("22_vqwv6")
+damage = 1
+origin = "Boss"
+metadata/_custom_type_script = "uid://ddw3xiwcv6bvr"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_djvqu"]
+radius = 46.0434
+
+[sub_resource type="Animation" id="Animation_myrdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-176, -166)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.984, 0.961, 0.937, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pkvft"]
+resource_name = "appear"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.7),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [PackedVector2Array(-176, -166), PackedVector2Array(-176, -166, 12, -151), PackedVector2Array(-176, -166, 12, -151, 120, -113), PackedVector2Array(-176, -166, 12, -151, 120, -113, 195, -37)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1, 1.35),
+"transitions": PackedFloat32Array(0.5, 0.5, -2, 0.5),
+"update": 0,
+"values": [Color(0.984, 0.961, 0.937, 0), Color(0.984314, 0.960784, 0.937255, 1), Color(0.984314, 0.960784, 0.937255, 1), Color(0.984094, 0.960935, 0.937077, 0.3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vdsxv"]
+_data = {
+&"RESET": SubResource("Animation_myrdq"),
+&"appear": SubResource("Animation_pkvft")
+}
+
+[sub_resource type="GDScript" id="GDScript_khbnd"]
+script/source = "extends Sprite2D
+
+
+var spin_speed := 1.0
+
+var scaling_speed := 0.1
+
+var target_scale := Vector2.ONE
+
+func _ready() -> void:
+	spin_speed = randf_range(TAU * 0.05, TAU * 0.2)
+	scaling_speed = randf_range(0.1, 0.5)
+
+
+func _process(delta: float) -> void:
+	rotate(spin_speed * delta)
+	target_scale.x += scaling_speed * delta
+	target_scale.y += scaling_speed * delta
+
+	rotation = wrapf(rotation, 0.0, TAU)
+	scale.x = max(pingpong(target_scale.x, 0.8), 0.15)
+	scale.y = max(pingpong(target_scale.y, 0.8), 0.15)
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsjf0"]
+bg_color = Color(0.152941, 0.152941, 0.266667, 1)
+border_color = Color(0.984314, 0.960784, 0.937255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_104v7"]
+bg_color = Color(0.286275, 0.301961, 0.494118, 1)
+border_color = Color(0.984314, 0.960784, 0.937255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00pu2"]
+bg_color = Color(0.776, 0.624, 0.647, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.960784, 0.937255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iyroj"]
+bg_color = Color(0.286275, 0.301961, 0.494118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.984314, 0.960784, 0.937255, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="Animation" id="Animation_v6gy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot2D/HealthUI/Symbol:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot2D/HealthUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot2D/HealthUI/ProgressBar:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mmn8"]
+bg_color = Color(1, 1, 1, 1)
+border_color = Color(0.984314, 0.960784, 0.937255, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Animation" id="Animation_me4bt"]
+resource_name = "appear"
+length = 0.55
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot2D/HealthUI/Symbol:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot2D/HealthUI/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot2D/HealthUI/ProgressBar:theme_override_styles/fill")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [SubResource("StyleBoxFlat_104v7"), SubResource("StyleBoxFlat_0mmn8"), SubResource("StyleBoxFlat_104v7")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot2D/HealthUI:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pnqyl"]
+resource_name = "disappear"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot2D/HealthUI/Symbol:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(0.5, -2, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot2D/HealthUI:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yvk6"]
+_data = {
+&"RESET": SubResource("Animation_v6gy5"),
+&"appear": SubResource("Animation_me4bt"),
+&"disappear": SubResource("Animation_pnqyl")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2408g"]
+radius = 526.745
+
+[sub_resource type="Curve2D" id="Curve2D_uxxbu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 4, 0, 0, 0, 0, -384, -356, 0, 0, 0, 0, 392, -340, 0, 0, 0, 0, 392, 300, 0, 0, 0, 0, -400, 292, 0, 0, 0, 0, -392, 292, 0, 0, 0, 0, -384, -356)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_nf1jm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1e-05)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Head:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, -3)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 94)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.276035]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-34, 83)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.261799]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/Head/Face:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-24, 21)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/Head/Face:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Head/Face:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw/Line2D:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw/Line2D:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw/Line2D:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw/Line2D:position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw/Line2D:rotation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw/Line2D:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:rotation")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:scale")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Pivot/Graphics/Body/Arms:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Pivot/Graphics/Body/Arms:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Pivot/Graphics/Body/Arms:scale")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:position")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36.5, 72.5)]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:rotation")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:scale")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:position")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(35.5, 72.5)]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:rotation")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/37/type = "value"
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:scale")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/38/type = "value"
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/path = NodePath("Pivot/Graphics/Body:position")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/39/type = "value"
+tracks/39/imported = false
+tracks/39/enabled = true
+tracks/39/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/40/type = "value"
+tracks/40/imported = false
+tracks/40/enabled = true
+tracks/40/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/41/type = "value"
+tracks/41/imported = false
+tracks/41/enabled = true
+tracks/41/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.0495, 60.0615)]
+}
+tracks/42/type = "value"
+tracks/42/imported = false
+tracks/42/enabled = true
+tracks/42/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18.4069, -35.149)]
+}
+tracks/43/type = "value"
+tracks/43/imported = false
+tracks/43/enabled = true
+tracks/43/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/44/type = "value"
+tracks/44/imported = false
+tracks/44/enabled = true
+tracks/44/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/45/type = "value"
+tracks/45/imported = false
+tracks/45/enabled = true
+tracks/45/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/46/type = "value"
+tracks/46/imported = false
+tracks/46/enabled = true
+tracks/46/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/47/type = "value"
+tracks/47/imported = false
+tracks/47/enabled = true
+tracks/47/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-17.1245, 55.3844)]
+}
+tracks/48/type = "value"
+tracks/48/imported = false
+tracks/48/enabled = true
+tracks/48/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26.9556, -37.241)]
+}
+tracks/49/type = "value"
+tracks/49/imported = false
+tracks/49/enabled = true
+tracks/49/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/50/type = "value"
+tracks/50/imported = false
+tracks/50/enabled = true
+tracks/50/path = NodePath("HitArea2D:monitoring")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/51/type = "value"
+tracks/51/imported = false
+tracks/51/enabled = true
+tracks/51/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/52/type = "value"
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/53/type = "value"
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:emitting")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/54/type = "value"
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/path = NodePath("ChargePath2D/PathFollow2D:progress_ratio")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/55/type = "value"
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/path = NodePath("HealthResource:current_amount")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [60]
+}
+tracks/56/type = "value"
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/path = NodePath("Reposition2D:position")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(384, -348)]
+}
+tracks/57/type = "value"
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/path = NodePath("ChargePath2D:curve")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve2D_uxxbu")]
+}
+tracks/58/type = "value"
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/path = NodePath("Pivot/Graphics:scale")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+tracks/59/type = "value"
+tracks/59/imported = false
+tracks/59/enabled = true
+tracks/59/path = NodePath("ChargePath2D:rotation")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vjewq"]
+resource_name = "appear"
+length = 3.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.15, 2.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.15, 3.35, 3.45),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.15, 3.35, 3.45),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.35, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1, -1, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.35, 2.7, 3.05),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(18, -3), Vector2(18, -3), Vector2(7, -75), Vector2(2, -67)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.35, 2.7, 3.05, 3.25, 3.45),
+"transitions": PackedFloat32Array(1, 0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.34045, -0.34045, 0.366753, -0.0541052, 0.0, -0.0541052]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.35, 2.7, 2.95),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Stars/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("appear"),
+"times": PackedFloat32Array(0.05)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/26/type = "animation"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("UIPivotMarker2D/AnimationPlayer")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"clips": PackedStringArray("appear"),
+"times": PackedFloat32Array(1.15)
+}
+
+[sub_resource type="Animation" id="Animation_104v7"]
+resource_name = "appear_fast"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1, -1, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(18, -3), Vector2(18, -3), Vector2(7, -75), Vector2(2, -67)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.34045, -0.34045, 0.366753, -0.0541052, 0.0, -0.0541052]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2408g"]
+resource_name = "burst"
+step = 0.05
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/ExplodingArea/Spawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"create"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/ExplodingArea/RandomTimer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Head/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("mad"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_c2k8t"]
+resource_name = "center"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChargePath2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChargePath2D/PathFollow2D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Curve2D" id="Curve2D_iyroj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_c0sxx"]
+resource_name = "charge"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.7, 0.9, 1.05, 1.65, 1.8),
+"transitions": PackedFloat32Array(0.5, -2, 1, 0.5, -2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.7, 0.9, 1.05, 1.8),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.182673, 0.37, 0.55, 0.75, 0.937327, 1.1, 1.3, 1.48733, 1.65, 1.8, 1.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0), Vector2(1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.182673, 0.37, 0.55, 0.75, 0.937327, 1.1, 1.3, 1.48733, 1.65, 1.8, 1.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 0.95, 1.3, 1.55, 1.8, 1.95),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1, 1),
+"update": 0,
+"values": [Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 0.95, 1.3, 1.55, 1.8, 1.95),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1, 1),
+"update": 0,
+"values": [Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Head:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.9, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/Body:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [0.943447, 0.943447, -0.547073, -0.424522]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2),
+"transitions": PackedFloat32Array(1, -2, -2, -2),
+"update": 0,
+"values": [-0.128329, -0.128329, -1.21052, -1.21052]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.85, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/22/type = "animation"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/Head/AnimationPlayer")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"clips": PackedStringArray("mad"),
+"times": PackedFloat32Array(0)
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("HitArea2D:monitoring")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("ChargePath2D/PathFollow2D:progress_ratio")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 1.67, 2),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/25/type = "method"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("VisionArea2D")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update"
+}]
+}
+tracks/26/type = "method"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Aim")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update"
+}]
+}
+tracks/27/type = "method"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Pivot/Graphics/Flipper")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"update"
+}]
+}
+tracks/28/type = "method"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Pivot/Graphics/Body/TrailEffect")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(1.65, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("ChargePath2D:curve")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve2D_iyroj")]
+}
+
+[sub_resource type="Animation" id="Animation_bhdji"]
+resource_name = "disappear"
+length = 1.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.15, 1.35, 1.45),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.15, 1.35, 1.45),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.35, 0.7, 1.05),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector2(18, -3), Vector2(7, -75), Vector2(2, -67)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.35, 0.7, 1.05, 1.25, 1.45),
+"transitions": PackedFloat32Array(0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.34045, 0.366753, -0.0541052, 0.0, -0.0541052]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.35, 0.7, 0.95),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Stars/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"appear"],
+"method": &"play_backwards"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0mmn8"]
+resource_name = "disappear_fast"
+length = 1.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.3, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1e-05), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:z_index")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [-1, -1, 0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Head:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2),
+"transitions": PackedFloat32Array(1, 0.5, -2, 1),
+"update": 0,
+"values": [Vector2(18, -3), Vector2(18, -3), Vector2(7, -75), Vector2(2, -67)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 0.5, -2, -2, -2, -2),
+"update": 0,
+"values": [-0.34045, -0.34045, 0.366753, -0.0541052, 0.0, -0.0541052]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.85, 1.1),
+"transitions": PackedFloat32Array(1, 0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.8, 0.8), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_iqyfc"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.55),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(2, -67), Vector2(8, -69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8, 2.1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-0.0541052, -0.0261799, 0.0261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.85),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(16, 94), Vector2(25.5, 89.5), Vector2(21.9054, 91.2027)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.85),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-0.276035, -0.471915, 0.0993767]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-34, 83), Vector2(-14.5, 80.5), Vector2(-29.5, 87.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2, 2.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.261799, 0.590782, -0.024081]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/27/type = "animation"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Pivot/Graphics/Head/AnimationPlayer")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"clips": PackedStringArray("idle"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Curve2D" id="Curve2D_prljo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -384, -340, 0, 0, 0, 0, 392, -348, 0, 0, 0, 0, 392, 300, 0, 0, 0, 0, -392, 292, 0, 0, 0, 0, -384, -340, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Animation" id="Animation_8yvk6"]
+resource_name = "multi_charge"
+length = 13.85
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.7, 0.9, 1.05, 1.65, 1.8, 2.3, 2.5, 2.65, 3, 3.2, 3.35, 3.95, 4.1, 4.55, 4.75, 4.9, 5.25, 5.45, 5.6, 6.2, 6.35, 6.85, 7.05, 7.2, 7.55, 7.75, 7.9, 8.5, 8.65, 9.2, 9.4, 9.55, 9.9, 10.1, 10.25, 10.85, 11, 11.5, 11.7, 11.85, 12.2, 12.4, 12.55, 13.15, 13.3),
+"transitions": PackedFloat32Array(0.5, -2, 1, 0.5, -2, 1, 0.5, 1, 0.5, -2, 1, 0.5, -2, 1, 0.5, 1, 0.5, -2, 1, 0.5, -2, 1, 0.5, 1, 0.5, -2, 1, 0.5, -2, 1, 0.5, 1, 0.5, -2, 1, 0.5, -2, 1, 0.5, 1, 0.5, -2, 1, 0.5, -2, 1, 0.5, 1),
+"update": 0,
+"values": [Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(10.8128, 60.7237), Vector2(29.3656, 34.6316), Vector2(-28.4121, 45.7102), Vector2(33.5879, 42.99)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.35, 0.7, 0.9, 1.05, 1.8, 2.3, 2.5, 2.65, 3, 3.2, 3.35, 4.1, 4.55, 4.75, 4.9, 5.25, 5.45, 5.6, 6.35, 6.85, 7.05, 7.2, 7.55, 7.75, 7.9, 8.65, 9.2, 9.4, 9.55, 9.9, 10.1, 10.25, 11, 11.5, 11.7, 11.85, 12.2, 12.4, 12.55, 13.3),
+"transitions": PackedFloat32Array(0.5, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1, 0.5, 1, 1, 0.5, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-26.9556, -37.241), Vector2(-26.9556, -37.241), Vector2(-30.549, -19.5506), Vector2(-44.0438, -29.5547)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 0.95, 1.3, 1.55, 1.8, 1.95, 2.3, 2.65, 3, 3.25, 3.6, 3.85, 4.1, 4.25, 4.55, 4.9, 5.25, 5.5, 5.85, 6.1, 6.35, 6.5, 6.85, 7.2, 7.55, 7.8, 8.15, 8.4, 8.65, 8.8, 9.2, 9.55, 9.9, 10.15, 10.5, 10.75, 11, 11.15, 11.5, 11.85, 12.2, 12.45, 12.8, 13.05, 13.3, 13.45),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1),
+"update": 0,
+"values": [Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(1, 40), Vector2(-24.6555, 39.8009), Vector2(-30.4138, 58.3438), Vector2(31.2058, 37.5284), Vector2(29.4013, 25.7288)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 0.95, 1.3, 1.55, 1.8, 1.95, 2.3, 2.65, 3, 3.25, 3.6, 3.85, 4.1, 4.25, 4.55, 4.9, 5.25, 5.5, 5.85, 6.1, 6.35, 6.5, 6.85, 7.2, 7.55, 7.8, 8.15, 8.4, 8.65, 8.8, 9.2, 9.55, 9.9, 10.15, 10.5, 10.75, 11, 11.15, 11.5, 11.85, 12.2, 12.45, 12.8, 13.05, 13.3, 13.45),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1, -2, -2, -2, -2, -2, -2, 1, 1),
+"update": 0,
+"values": [Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-27.7667, -27.773), Vector2(-12.2418, -40.0765), Vector2(-12.2418, -40.0765), Vector2(-26.9566, -15.0441), Vector2(-26.5973, -9.39734)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Head:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15, 1.6, 1.85, 2, 2.3, 2.45, 3.9, 4.15, 4.3, 4.55, 4.7, 6.15, 6.4, 6.55, 6.85, 7, 8.45, 8.7, 8.85, 9.2, 9.35, 10.8, 11.05, 11.2, 11.5, 11.65, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(1, 1, -2, -2, -2, 1, 1, -2, -2, -2, 1, 1, -2, -2, -2, 1, 1, -2, -2, -2, 1, 1, -2, -2, -2, 1, 1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20), Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20), Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20), Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20), Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20), Vector2(42, -75), Vector2(42, -75), Vector2(42, -75), Vector2(24, -20), Vector2(24, -20)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.9, 1.6, 1.85, 2, 2.3, 2.55, 2.8, 3.2, 3.9, 4.15, 4.3, 4.55, 4.8, 5.05, 5.45, 6.15, 6.4, 6.55, 6.85, 7.1, 7.35, 7.75, 8.45, 8.7, 8.85, 9.2, 9.45, 9.7, 10.1, 10.8, 11.05, 11.2, 11.5, 11.75, 12, 12.4, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921, 0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921, 0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921, 0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921, 0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921, 0.655946, 0.478953, 0.655946, 0.478953, 0.655946, -1.02765, -0.895921]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Body:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2, 2.3, 3.9, 4.15, 4.3, 4.55, 6.15, 6.4, 6.55, 6.85, 8.45, 8.7, 8.85, 9.2, 10.8, 11.05, 11.2, 11.5, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86), Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86), Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86), Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86), Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86), Vector2(58, -68), Vector2(58, -68), Vector2(42, -86), Vector2(42, -86)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2, 2.3, 3.9, 4.15, 4.3, 4.55, 6.15, 6.4, 6.55, 6.85, 8.45, 8.7, 8.85, 9.2, 10.8, 11.05, 11.2, 11.5, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2),
+"update": 0,
+"values": [0.943447, 0.943447, -0.547073, -0.424522, 0.943447, 0.943447, -0.547073, -0.424522, 0.943447, 0.943447, -0.547073, -0.424522, 0.943447, 0.943447, -0.547073, -0.424522, 0.943447, 0.943447, -0.547073, -0.424522, 0.943447, 0.943447, -0.547073, -0.424522]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2, 2.3, 3.9, 4.15, 4.3, 4.55, 6.15, 6.4, 6.55, 6.85, 8.45, 8.7, 8.85, 9.2, 10.8, 11.05, 11.2, 11.5, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3), Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3), Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3), Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3), Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3), Vector2(1.5, -9.5), Vector2(1.5, -9.5), Vector2(75, -3), Vector2(75, -3)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1.6, 1.85, 2, 2.3, 3.9, 4.15, 4.3, 4.55, 6.15, 6.4, 6.55, 6.85, 8.45, 8.7, 8.85, 9.2, 10.8, 11.05, 11.2, 11.5, 13.1, 13.35, 13.5),
+"transitions": PackedFloat32Array(1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2, 1, -2, -2, -2),
+"update": 0,
+"values": [-0.128329, -0.128329, -1.21052, -1.21052, -0.128329, -0.128329, -1.21052, -1.21052, -0.128329, -0.128329, -1.21052, -1.21052, -0.128329, -0.128329, -1.21052, -1.21052, -0.128329, -0.128329, -1.21052, -1.21052, -0.128329, -0.128329, -1.21052, -1.21052]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/ChargingEffect:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.3, 3.9, 4.55, 6.15, 6.85, 8.45, 9.2, 10.8, 11.5, 13.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.3, 4.55, 6.85, 9.2, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2.3, 4.55, 6.85, 9.2, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/18/type = "animation"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Head/AnimationPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": PackedStringArray("mad"),
+"times": PackedFloat32Array(0)
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("HitArea2D:monitoring")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 1.7, 2, 4, 4.3, 6.25, 6.55, 8.55, 8.85, 10.9, 11.2, 13.2, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true, false, true, false, true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("ChargePath2D/PathFollow2D:progress_ratio")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 1.7, 2, 4, 4.3, 6.25, 6.55, 8.55, 8.85, 10.9, 11.2, 13.2, 13.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [0.0, 0.0, 0.131246, 0.131246, 0.3312, 0.3312, 0.4996, 0.4996, 0.7027, 0.7027, 0.8675, 0.8675, 1.0]
+}
+tracks/21/type = "method"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/Body/TrailEffect")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(1.7, 2, 4, 4.3, 6.25, 6.55, 8.55, 8.85, 10.9, 11.2, 13.2, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("ChargePath2D:curve")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Curve2D_prljo")]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 2.2, 6.85, 11.5, 13.85),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/24/type = "method"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/ExplodingArea/RandomTimer")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(1.7, 2, 4, 4.3, 6.25, 6.55, 8.55, 8.85, 10.9, 11.2, 13.2, 13.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}, {
+"args": [],
+"method": &"start_random"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/25/type = "method"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pivot/Graphics/ExplodingArea/Spawner")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(1.7, 4, 6.25, 8.55, 10.9, 13.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"create"
+}, {
+"args": [],
+"method": &"create"
+}, {
+"args": [],
+"method": &"create"
+}, {
+"args": [],
+"method": &"create"
+}, {
+"args": [],
+"method": &"create"
+}, {
+"args": [],
+"method": &"create"
+}]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("ChargePath2D:rotation")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uxxbu"]
+resource_name = "phase_two"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HealthResource:current_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(0, 1),
+"update": 1,
+"values": [0, 60]
+}
+
+[sub_resource type="Animation" id="Animation_jbigi"]
+resource_name = "randomize"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RandomChance")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw_dice"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_akh4n"]
+resource_name = "stunned"
+length = 2.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Graphics/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.55),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-21, -53), Vector2(-1.00003, -60)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Graphics/Head:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.55),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [-0.571919, -0.206626]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.4),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(16, 94), Vector2(25.5, 89.5), Vector2(21.9054, 91.2027)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.65, 1.4),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [-0.276035, -0.471915, 0.0993767]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(-34, 83), Vector2(-14.5, 80.5), Vector2(-29.5, 87.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pivot/Graphics/Body/Arms/RightArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.261799, 0.590782, -0.024081]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_0/out")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 40)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:curve:point_1/in")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_0/out")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 40)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:curve:point_1/in")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Pivot/Graphics/Body/GPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Pivot/Graphics/Body/GPUParticles2D2:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Pivot/Graphics/Head:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Pivot/Graphics/Body:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, -67.5)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Pivot/Graphics/Body:rotation")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Pivot/Graphics/Body:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.5, -9.5)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:rotation")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.128329]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Pivot/Graphics/NeckGPUParticles2D:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Pivot/Graphics/Head:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Pivot/Graphics/Body/Arms/LeftArm/PathDraw:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Pivot/Graphics/Body/Arms/RightArm/PathDraw:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/27/type = "animation"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Pivot/Graphics/Head/AnimationPlayer")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"clips": PackedStringArray("stunned"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqyfc"]
+_data = {
+&"RESET": SubResource("Animation_nf1jm"),
+&"appear": SubResource("Animation_vjewq"),
+&"appear_fast": SubResource("Animation_104v7"),
+&"burst": SubResource("Animation_2408g"),
+&"center": SubResource("Animation_c2k8t"),
+&"charge": SubResource("Animation_c0sxx"),
+&"disappear": SubResource("Animation_bhdji"),
+&"disappear_fast": SubResource("Animation_0mmn8"),
+&"idle": SubResource("Animation_iqyfc"),
+&"multi_charge": SubResource("Animation_8yvk6"),
+&"phase_two": SubResource("Animation_uxxbu"),
+&"randomize": SubResource("Animation_jbigi"),
+&"stunned": SubResource("Animation_akh4n")
+}
+
+[node name="Aries" type="Node2D"]
+position = Vector2(960, 540)
+metadata/_edit_vertical_guides_ = [576.0, 1344.0]
+metadata/_edit_horizontal_guides_ = [192.0, 824.0]
+
+[node name="HealthResource" parent="." instance=ExtResource("28_iyroj")]
+max_amount = 60
+current_amount = 60
+
+[node name="AnimationTrigger" parent="HealthResource" node_paths=PackedStringArray("animation_player") instance=ExtResource("28_prljo")]
+animation_name = "hurt"
+animation_player = NodePath("../../Pivot/Graphics/AnimationPlayer")
+
+[node name="RandomChance" parent="." instance=ExtResource("3_05iw4")]
+dice_faces = 20
+luck_threshold = 0.6
+
+[node name="Pivot" type="Node2D" parent="."]
+position = Vector2(0, 4)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="Graphics" type="Node2D" parent="Pivot"]
+material = ExtResource("16_hsjf0")
+scale = Vector2(-1, 1)
+
+[node name="Line2D" type="Line2D" parent="Pivot/Graphics"]
+position = Vector2(65, -15)
+rotation = -0.331282
+points = PackedVector2Array(0, 0)
+width = 120.0
+default_color = Color(0.94902, 0.827451, 0.670588, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D" type="Line2D" parent="Pivot/Graphics/Line2D"]
+points = PackedVector2Array(0, 0)
+width = 80.0
+default_color = Color(0.984314, 0.960784, 0.937255, 1)
+joint_mode = 2
+end_cap_mode = 2
+
+[node name="ChargingEffect" parent="Pivot/Graphics" instance=ExtResource("17_vqwv6")]
+material = SubResource("CanvasItemMaterial_vqwv6")
+position = Vector2(-8, 0)
+emitting = false
+trail_lifetime = 0.1
+process_material = SubResource("ParticleProcessMaterial_s25f1")
+
+[node name="Body" type="Node2D" parent="Pivot/Graphics"]
+material = ExtResource("16_hsjf0")
+position = Vector2(0.5, -67.5)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Pivot/Graphics/Body"]
+use_parent_material = true
+position = Vector2(35.5, 72.5)
+emitting = false
+amount = 64
+texture = ExtResource("1_nhg30")
+process_material = SubResource("ParticleProcessMaterial_vjewq")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Pivot/Graphics/Body"]
+use_parent_material = true
+position = Vector2(36.5, 72.5)
+emitting = false
+amount = 64
+texture = ExtResource("1_nhg30")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_vjewq")
+
+[node name="Arms" type="Node2D" parent="Pivot/Graphics/Body"]
+use_parent_material = true
+
+[node name="LeftArm" type="Node2D" parent="Pivot/Graphics/Body/Arms"]
+use_parent_material = true
+position = Vector2(16, 94)
+rotation = -0.276035
+metadata/_edit_group_ = true
+
+[node name="PathDraw" parent="Pivot/Graphics/Body/Arms/LeftArm" node_paths=PackedStringArray("line") instance=ExtResource("3_8x1hv")]
+use_parent_material = true
+scale = Vector2(1, 1e-05)
+curve = SubResource("Curve2D_8x1hv")
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="Pivot/Graphics/Body/Arms/LeftArm/PathDraw"]
+points = PackedVector2Array(1, 0, 0.0710276, 1.13911, -2.2212, 4.44178, -3.64666, 6.85071, -5.13467, 9.73603, -6.59248, 13.0763, -7.92734, 16.8499, -9.04649, 21.0354, -9.85718, 25.6113, -10.2667, 30.5562, -10.292, 33.1602, -10.1822, 35.8484, -9.92571, 38.6181, -9.51097, 41.4666, -8.92636, 44.3911, -8.16029, 47.3891, -7.20116, 50.4578, -6.03739, 53.5946, -4.65736, 56.7967, -3.0495, 60.0615)
+width = 32.0
+default_color = Color(0.94902, 0.827451, 0.670588, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="RightArm" type="Node2D" parent="Pivot/Graphics/Body/Arms"]
+z_index = -1
+material = ExtResource("1_8x1hv")
+use_parent_material = true
+position = Vector2(-34, 83)
+rotation = 0.261799
+metadata/_edit_group_ = true
+
+[node name="PathDraw" parent="Pivot/Graphics/Body/Arms/RightArm" node_paths=PackedStringArray("line") instance=ExtResource("3_8x1hv")]
+use_parent_material = true
+scale = Vector2(1, 1e-05)
+curve = SubResource("Curve2D_iqyfc")
+line = NodePath("Line2D")
+
+[node name="Line2D" type="Line2D" parent="Pivot/Graphics/Body/Arms/RightArm/PathDraw"]
+points = PackedVector2Array(1, 0, -0.884388, 0.852335, -2.98254, 1.91985, -5.62258, 3.4168, -8.63297, 5.34457, -11.8421, 7.70457, -15.0785, 10.4982, -18.1706, 13.7268, -20.9468, 17.3919, -23.2355, 21.4948, -24.8653, 26.0368, -25.3794, 28.473, -25.6644, 31.0195, -25.699, 33.6766, -25.4615, 36.4442, -24.9306, 39.3228, -24.0849, 42.3124, -22.9029, 45.4131, -21.3631, 48.6253, -19.4441, 51.949, -17.1245, 55.3844)
+width = 32.0
+default_color = Color(0.94902, 0.827451, 0.670588, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TrailEffect" parent="Pivot/Graphics/Body" instance=ExtResource("21_00pu2")]
+position = Vector2(-8.54783, 67.468)
+
+[node name="Line2D" parent="Pivot/Graphics/Body/TrailEffect" index="0"]
+width = 100.0
+
+[node name="Line2D2" parent="Pivot/Graphics/Body/TrailEffect" index="1"]
+width = 60.0
+
+[node name="Head" type="Sprite2D" parent="Pivot/Graphics"]
+modulate = Color(1, 1, 1, 0)
+y_sort_enabled = true
+use_parent_material = true
+position = Vector2(18, -3)
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(1, 1, 163, 127)
+metadata/_edit_group_ = true
+
+[node name="Face" type="Node2D" parent="Pivot/Graphics/Head"]
+use_parent_material = true
+position = Vector2(-24, 21)
+
+[node name="LeftEye" type="Sprite2D" parent="Pivot/Graphics/Head/Face"]
+use_parent_material = true
+position = Vector2(-15, -4)
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(6, 127, 13, 19)
+
+[node name="LeftEyeBrow" type="Sprite2D" parent="Pivot/Graphics/Head/Face"]
+use_parent_material = true
+position = Vector2(-15, -9)
+rotation = 0.331954
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(27, 131, 20, 11)
+
+[node name="RightEye" type="Sprite2D" parent="Pivot/Graphics/Head/Face"]
+use_parent_material = true
+position = Vector2(21, -4)
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(6, 127, 13, 19)
+
+[node name="RightEyeBrow" type="Sprite2D" parent="Pivot/Graphics/Head/Face"]
+use_parent_material = true
+position = Vector2(21, -9)
+rotation = -0.351643
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(27, 131, 20, 11)
+
+[node name="Nose" type="Sprite2D" parent="Pivot/Graphics/Head/Face"]
+use_parent_material = true
+position = Vector2(-1, 14.5)
+texture = ExtResource("1_7p6pq")
+region_enabled = true
+region_rect = Rect2(19, 148, 14, 13)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Graphics/Head"]
+reset_on_save = false
+libraries = {
+&"": SubResource("AnimationLibrary_pkvft")
+}
+autoplay = "idle"
+
+[node name="HitRemoteTransform2D" type="RemoteTransform2D" parent="Pivot/Graphics/Head"]
+position = Vector2(-4.4519, -10.2558)
+remote_path = NodePath("../../../../HitArea2D")
+
+[node name="WeaponRemoteTransform2D" type="RemoteTransform2D" parent="Pivot/Graphics/Head"]
+
+[node name="StunEffect" parent="Pivot/Graphics" instance=ExtResource("21_uxxbu")]
+visible = false
+z_as_relative = false
+position = Vector2(-24.747, -55.4315)
+
+[node name="NeckGPUParticles2D" type="GPUParticles2D" parent="Pivot/Graphics"]
+use_parent_material = true
+position = Vector2(1.5, -9.5)
+rotation = -0.128329
+emitting = false
+texture = ExtResource("1_nhg30")
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nf1jm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/Graphics"]
+libraries = {
+&"": SubResource("AnimationLibrary_cfiu0")
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Pivot/Graphics"]
+remote_path = NodePath("../../../UIPivotMarker2D")
+update_rotation = false
+update_scale = false
+
+[node name="HurtAreaRemoteTransform" type="RemoteTransform2D" parent="Pivot/Graphics"]
+remote_path = NodePath("../../../HurtArea2D")
+
+[node name="ExplodingArea" type="Node2D" parent="Pivot/Graphics"]
+
+[node name="RandomDistribute2D" parent="Pivot/Graphics/ExplodingArea" instance=ExtResource("22_akh4n")]
+inner_radius = 150.0
+outer_radius = 400.0
+
+[node name="Spawner" parent="Pivot/Graphics/ExplodingArea" instance=ExtResource("11_djvqu")]
+top_level = true
+product_packed_scene = ExtResource("12_2408g")
+common_ancestor_name = &"Aries"
+
+[node name="RandomTimer" parent="Pivot/Graphics/ExplodingArea" instance=ExtResource("13_uxxbu")]
+autostart = false
+max_wait_time = 0.3
+
+[node name="Flipper" parent="Pivot/Graphics" node_paths=PackedStringArray("target", "with") instance=ExtResource("25_djvqu")]
+target = NodePath("..")
+with = NodePath("../../../Reposition2D")
+
+[node name="HurtArea2D" parent="." instance=ExtResource("19_hsjf0")]
+position = Vector2(0, 4)
+armor_data = SubResource("Resource_05iw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea2D"]
+position = Vector2(-2, -75)
+shape = SubResource("CircleShape2D_104v7")
+debug_color = Color(1, 0.150197, 0.348338, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtArea2D"]
+position = Vector2(33, 14)
+shape = SubResource("CircleShape2D_00pu2")
+debug_color = Color(1, 0.150197, 0.348338, 0.42)
+
+[node name="HitArea2D" parent="." instance=ExtResource("20_05iw4")]
+position = Vector2(13.5481, -9.25586)
+monitoring = false
+hit_data = SubResource("Resource_s25f1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea2D"]
+position = Vector2(-30.9546, -1.67644)
+shape = SubResource("CircleShape2D_djvqu")
+debug_color = Color(0.687589, 0.290781, 1, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitArea2D"]
+position = Vector2(40.3741, -5.82514)
+shape = SubResource("CircleShape2D_djvqu")
+debug_color = Color(0.687589, 0.290781, 1, 0.42)
+
+[node name="RandomDistribute2D" parent="." node_paths=PackedStringArray("target") instance=ExtResource("22_akh4n")]
+target = NodePath("../Pivot")
+inner_radius = 500.0
+outer_radius = 500.0
+
+[node name="Stars" type="Node2D" parent="."]
+position = Vector2(-17, -62)
+
+[node name="Line2D" type="Line2D" parent="Stars"]
+points = PackedVector2Array(-176, -166)
+width = 6.0
+default_color = Color(0.984, 0.961, 0.937, 0)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stars"]
+libraries = {
+&"": SubResource("AnimationLibrary_vdsxv")
+}
+speed_scale = 1.7
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars"]
+position = Vector2(-181, -166)
+texture = ExtResource("5_8x1hv")
+script = SubResource("GDScript_khbnd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Stars"]
+position = Vector2(12, -151)
+texture = ExtResource("5_8x1hv")
+script = SubResource("GDScript_khbnd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Stars"]
+position = Vector2(115, -113)
+texture = ExtResource("5_8x1hv")
+script = SubResource("GDScript_khbnd")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Stars"]
+position = Vector2(195, -36)
+texture = ExtResource("5_8x1hv")
+script = SubResource("GDScript_khbnd")
+
+[node name="UIPivotMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, 4)
+script = ExtResource("29_c0sxx")
+shake_strength = 3.0
+
+[node name="Pivot2D" type="Node2D" parent="UIPivotMarker2D"]
+position = Vector2(33, 5)
+
+[node name="HealthUI" type="Control" parent="UIPivotMarker2D/Pivot2D"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = 67.0
+offset_right = 56.0
+offset_bottom = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="UIPivotMarker2D/Pivot2D/HealthUI"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -18.5
+offset_right = 239.0
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hsjf0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_104v7")
+max_value = 60.0
+step = 1.0
+show_percentage = false
+
+[node name="FrontOutline" type="Panel" parent="UIPivotMarker2D/Pivot2D/HealthUI/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_00pu2")
+
+[node name="Symbol" type="RichTextLabel" parent="UIPivotMarker2D/Pivot2D/HealthUI"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = -40.0
+offset_right = 96.0
+offset_bottom = 40.0
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(40, 40)
+theme_override_colors/default_color = Color(0.94902, 0.827451, 0.670588, 1)
+theme_override_colors/font_outline_color = Color(0.94902, 0.827451, 0.670588, 1)
+theme_override_colors/font_shadow_color = Color(0.545098, 0.427451, 0.611765, 1)
+theme_override_constants/outline_size = 7
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 4
+theme_override_fonts/normal_font = ExtResource("30_c0sxx")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_iyroj")
+bbcode_enabled = true
+text = "[char=2648]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UIPivotMarker2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_8yvk6")
+}
+autoplay = "RESET"
+
+[node name="Timer" type="Timer" parent="UIPivotMarker2D"]
+
+[node name="Reposition2D" parent="." instance=ExtResource("23_s25f1")]
+position = Vector2(384, -348)
+
+[node name="VisionArea2D" parent="." instance=ExtResource("24_05iw4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea2D"]
+shape = SubResource("CircleShape2D_2408g")
+debug_color = Color(0.624385, 0.532433, 1.92523e-07, 0.42)
+
+[node name="Aim" parent="." node_paths=PackedStringArray("target") instance=ExtResource("24_djvqu")]
+rotation = -0.532791
+target = NodePath("../Reposition2D")
+spread_in_degrees = 15.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Aim"]
+remote_path = NodePath("../../ChargePath2D")
+update_position = false
+update_scale = false
+
+[node name="ChargePath2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_uxxbu")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ChargePath2D"]
+position = Vector2(0, 4)
+rotation = -2.40643
+scale = Vector2(-1, 1)
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="ChargePath2D/PathFollow2D"]
+remote_path = NodePath("../../../Pivot")
+update_rotation = false
+update_scale = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_iqyfc")
+}
+playback_default_blend_time = 0.5
+
+[connection signal="current_changed" from="HealthResource" to="UIPivotMarker2D/Pivot2D/HealthUI/ProgressBar" method="set_value"]
+[connection signal="current_changed" from="HealthResource" to="HealthResource/AnimationTrigger" method="play" unbinds=1]
+[connection signal="current_changed" from="HealthResource" to="UIPivotMarker2D/Pivot2D/HealthUI" method="show" unbinds=1]
+[connection signal="max_changed" from="HealthResource" to="UIPivotMarker2D/Pivot2D/HealthUI/ProgressBar" method="set_max"]
+[connection signal="ready" from="HealthResource" to="HealthResource" method="replenish"]
+[connection signal="created" from="Pivot/Graphics/ExplodingArea/Spawner" to="Pivot/Graphics/ExplodingArea/RandomDistribute2D" method="distribute"]
+[connection signal="timeout" from="Pivot/Graphics/ExplodingArea/RandomTimer" to="Pivot/Graphics/ExplodingArea/Spawner" method="create"]
+[connection signal="damaged" from="HurtArea2D" to="." method="_on_hurt_area_2d_damaged"]
+[connection signal="hit_landed" from="HitArea2D" to="." method="_on_hit_area_hit_landed"]
+[connection signal="visible_area_found" from="VisionArea2D" to="Reposition2D" method="update_position"]
+
+[editable path="Pivot/Graphics/Body/TrailEffect"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwhpp5f8aybww"]
+
+[ext_resource type="PackedScene" uid="uid://q1d2hhjii1vc" path="res://Tools/ShapeDrawing2D/ShapeDrawing2D.tscn" id="1_dus4o"]
+[ext_resource type="Script" uid="uid://bu8ni7xagd8y8" path="res://Tools/ShapeDrawing2D/CircleDrawing2D.gd" id="2_dus4o"]
+
+[node name="CircleDrawing2D" instance=ExtResource("1_dus4o")]
+script = ExtResource("2_dus4o")
+radius = 100.0
+filled = true
+width = 16.0
+antialiased = true

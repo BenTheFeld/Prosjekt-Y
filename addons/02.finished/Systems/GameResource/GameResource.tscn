@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://gn5p417ytdid"]
+
+[ext_resource type="Script" uid="uid://dsr35c7ykom6g" path="res://Systems/GameResource/GameResource.gd" id="1_emmat"]
+
+[node name="GameResource" type="Node"]
+script = ExtResource("1_emmat")
+max_amount = 5

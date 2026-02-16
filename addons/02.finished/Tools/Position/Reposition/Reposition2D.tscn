@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://x76twn7sagki"]
+
+[ext_resource type="Script" uid="uid://wecghh6n5gfr" path="res://Tools/Position/Reposition/Reposition2D.gd" id="1_bb7dv"]
+
+[node name="Reposition2D" type="Node2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_bb7dv")

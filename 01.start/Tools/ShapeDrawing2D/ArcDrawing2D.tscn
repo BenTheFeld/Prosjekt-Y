@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpojp0gc7gtne"]
+
+[ext_resource type="PackedScene" uid="uid://q1d2hhjii1vc" path="res://Tools/ShapeDrawing2D/ShapeDrawing2D.tscn" id="1_3n8wj"]
+[ext_resource type="Script" uid="uid://dmjxt0u5tc146" path="res://Tools/ShapeDrawing2D/ArcDrawing2D.gd" id="2_eu1m0"]
+
+[node name="ArcDrawing2D" instance=ExtResource("1_3n8wj")]
+script = ExtResource("2_eu1m0")
+radius = 123.475
+start_angle = 0.0
+end_angle = 360.0
+point_count = 64
+width = 16.0
+antialiased = true

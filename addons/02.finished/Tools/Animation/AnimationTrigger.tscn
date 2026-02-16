@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cahhjp8ss6na"]
+
+[ext_resource type="Script" uid="uid://c5vm3o76iefv8" path="res://Tools/Animation/AnimationTrigger.gd" id="1_530sb"]
+
+[node name="AnimationTrigger" type="Node"]
+script = ExtResource("1_530sb")

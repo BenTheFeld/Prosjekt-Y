@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnkalbcp3nuf8"]
+
+[ext_resource type="PackedScene" uid="uid://mf3rbi061tn3" path="res://Systems/Vision/VisibleArea2D.tscn" id="1_2m63e"]
+[ext_resource type="PackedScene" uid="uid://cwhpp5f8aybww" path="res://Tools/ShapeDrawing2D/CircleDrawing2D.tscn" id="2_b42tl"]
+
+[sub_resource type="GDScript" id="GDScript_b42tl"]
+script/source = "extends Node2D
+
+
+func _physics_process(delta: float) -> void:
+	global_position = get_global_mouse_position()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2m63e"]
+radius = 100.0
+
+[node name="VisibilityTest" type="Node2D"]
+script = SubResource("GDScript_b42tl")
+
+[node name="VisibleArea2D" parent="." instance=ExtResource("1_2m63e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleArea2D"]
+shape = SubResource("CircleShape2D_2m63e")
+debug_color = Color(0.624327, 0.532461, 0, 0.42)
+
+[node name="CircleDrawing2D" parent="." instance=ExtResource("2_b42tl")]
+filled = false

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1uw3hwk7yud7"]
+
+[ext_resource type="Texture2D" uid="uid://dtqvl88ipkvbf" path="res://assets/FBDNY.png" id="1_6ienu"]
+[ext_resource type="Script" uid="uid://v1tip1gi54rx" path="res://boss_projectile.gd" id="2_2n0ct"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fnfp1"]
+radius = 8.0
+height = 16.0
+
+[node name="projectile" type="Sprite2D" groups=["enemy", "projectile"]]
+scale = Vector2(2, 2)
+texture = ExtResource("1_6ienu")
+script = ExtResource("2_2n0ct")
+speed = 1000
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy", "projectile"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy", "projectile"]]
+shape = SubResource("CapsuleShape2D_fnfp1")
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

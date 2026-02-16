@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://dc4kvdo8re28e"]
+
+[ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="1_dlmty"]
+[ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="1_jncid"]
+[ext_resource type="Script" uid="uid://jcdk03dn0asj" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
+[ext_resource type="FontFile" uid="uid://bjmq75dgsuc47" path="res://assets/pixel_3-kopi/pixel.ttf" id="2_neq0i"]
+[ext_resource type="Script" uid="uid://brm3vfyv0u5cp" path="res://scripts/boss_health.gd" id="3_r3bxh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
+radius = 22.0
+height = 86.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3bxh"]
+radius = 21.0
+height = 84.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3bxh"]
+size = Vector2(312, 282)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_qnbj4")
+
+[node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
+shape = SubResource("CapsuleShape2D_neq0i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1796875, 0.171875)
+texture = ExtResource("1_jncid")
+script = ExtResource("3_r3bxh")
+
+[node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
+scale = Vector2(5.5652175, 5.818182)
+target_position = Vector2(-50, 0)
+collision_mask = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
+
+[node name="HealthBar" parent="Sprite2D/CanvasLayer" instance=ExtResource("1_dlmty")]
+offset_left = 291.0
+offset_top = 540.0
+offset_right = 461.93027
+offset_bottom = 549.04254
+scale = Vector2(3.7599998, 3.7599998)
+
+[node name="Label" type="Label" parent="Sprite2D/CanvasLayer"]
+offset_left = 280.0
+offset_top = 457.99997
+offset_right = 609.0
+offset_bottom = 487.99997
+scale = Vector2(2.3200002, 2.3200002)
+theme_override_fonts/font = ExtResource("2_neq0i")
+text = "BIG BOSS"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_r3bxh")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("RectangleShape2D_r3bxh")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

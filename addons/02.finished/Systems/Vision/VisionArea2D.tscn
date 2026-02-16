@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://kn3dera5rtbx"]
+
+[ext_resource type="Script" uid="uid://poreg3atqkj8" path="res://Systems/Vision/VisionArea2D.gd" id="1_l7mom"]
+
+[node name="VisionArea2D" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_l7mom")
