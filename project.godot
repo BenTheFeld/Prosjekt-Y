@@ -23,10 +23,6 @@ Global="*res://scripts/global.gd"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
-[global_group]
-
-enemy=""
-
 [input]
 
 walk_right={
@@ -63,8 +59,9 @@ jump={
 [physics]
 
 2d/physics_engine="GodotPhysics2D"
-2d/default_gravity=500.0
+2d/default_gravity=300.0
 2d/defaults/default_clear_color=Color(1, 1, 1, 1)
+<<<<<<<HEAD2d/default_gravity=500.0
 
 [rendering]
 

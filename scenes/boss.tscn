@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dc4kvdo8re28e"]
+[gd_scene load_steps=9 format=3 uid="uid://cgtffdbbpefak"]
 
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="1_dlmty"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="1_jncid"]
-[ext_resource type="Script" uid="uid://jcdk03dn0asj" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
+[ext_resource type="Script" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
 [ext_resource type="FontFile" uid="uid://bjmq75dgsuc47" path="res://assets/pixel_3-kopi/pixel.ttf" id="2_neq0i"]
-[ext_resource type="Script" uid="uid://brm3vfyv0u5cp" path="res://scripts/boss_health.gd" id="3_r3bxh"]
+[ext_resource type="Script" path="res://scripts/boss_health.gd" id="3_r3bxh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
 radius = 22.0
