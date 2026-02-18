@@ -59,11 +59,11 @@ jump={
 [physics]
 
 2d/physics_engine="GodotPhysics2D"
-2d/default_gravity=300.0
+2d/default_gravity=600.0
 2d/defaults/default_clear_color=Color(1, 1, 1, 1)
 <<<<<<<HEAD2d/default_gravity=500.0
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.5152081, 0.5152081, 0.5152081, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

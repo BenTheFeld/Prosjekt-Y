@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="1_dlmty"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="1_jncid"]
-[ext_resource type="Script" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
+[ext_resource type="Script" uid="uid://jcdk03dn0asj" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
 [ext_resource type="FontFile" uid="uid://bjmq75dgsuc47" path="res://assets/pixel_3-kopi/pixel.ttf" id="2_neq0i"]
 [ext_resource type="Script" path="res://scripts/boss_health.gd" id="3_r3bxh"]
 
@@ -68,3 +68,4 @@ shape = SubResource("CapsuleShape2D_r3bxh")
 shape = SubResource("RectangleShape2D_r3bxh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var bullet_scene = preload("res://scenes/boss_projectile.tscn") 
 
 var player: CharacterBody2D
-var isClose = true # Set to true by default so he moves immediately
+var isClose = false # Set to true by default so he moves immediately
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -59,5 +59,10 @@ func shoot():
 		get_tree().root.add_child(b)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("player"):
+		isClose = true
+
+
+func _on_area_2d_2_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
 		isClose = true
