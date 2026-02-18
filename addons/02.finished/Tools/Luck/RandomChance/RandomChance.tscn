@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnlmmf8ti65s"]
-
-[ext_resource type="Script" uid="uid://dh22la6v8u4i3" path="res://Tools/RandomChance/RandomChance.gd" id="1_fduur"]
-
-[node name="RandomChance" type="Node"]
-script = ExtResource("1_fduur")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://278qqv15yusg"]
-
-[ext_resource type="Script" uid="uid://cw57hhiu7wch7" path="res://Tools/Time/RandomTimer/RandomTimer.gd" id="1_6yyrj"]
-
-[node name="RandomTimer" type="Timer"]
-autostart = true
-script = ExtResource("1_6yyrj")
-
-[connection signal="timeout" from="." to="." method="_on_timeout"]

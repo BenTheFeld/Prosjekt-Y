@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c46covgnuah06"]
-
-[ext_resource type="Script" uid="uid://ccvkefsfjjv0l" path="res://Tools/Draw/PathDraw/PathDraw.gd" id="1_pr8hv"]
-
-[node name="PathDraw" type="Path2D"]
-script = ExtResource("1_pr8hv")
-metadata/_edit_group_ = true

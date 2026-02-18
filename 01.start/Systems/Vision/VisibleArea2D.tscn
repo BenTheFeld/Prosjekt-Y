@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://mf3rbi061tn3"]
-
-[node name="VisibleArea2D" type="Area2D"]
-collision_layer = 4
-collision_mask = 0
-monitoring = false

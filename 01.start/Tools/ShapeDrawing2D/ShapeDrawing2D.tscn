@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://q1d2hhjii1vc"]
-
-[ext_resource type="Script" uid="uid://bisyp7rgf1vby" path="res://Tools/ShapeDrawing2D/ShapeDrawing2D.gd" id="1_j3v1a"]
-
-[node name="ShapeDrawing2D" type="Node2D"]
-script = ExtResource("1_j3v1a")
