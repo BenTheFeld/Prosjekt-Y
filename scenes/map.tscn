@@ -1,13 +1,13 @@
 [gd_scene load_steps=32 format=4 uid="uid://cf8uao6uqqnp7"]
 
-[ext_resource type="Script" path="res://scenes/screenshake.gd" id="1_nakos"]
+[ext_resource type="Script" uid="uid://dum7iipmuf6y3" path="res://scripts/screenshake.gd" id="1_nakos"]
 [ext_resource type="Texture2D" uid="uid://bj2mdigjphphv" path="res://assets/ch_02_world_building_foundations/forgotten_forest_example_tileset.png" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://ok3b26ui2uu" path="res://assets/ch_02_world_building_foundations/BG.png" id="2_be0no"]
 [ext_resource type="Texture2D" uid="uid://dq710yoqtlc3y" path="res://assets/ch_02_world_building_foundations/autotile_template.png" id="2_gldc4"]
 [ext_resource type="Texture2D" uid="uid://cb47r6s0jwriq" path="res://assets/tileset.png" id="3_0cso3"]
 [ext_resource type="PackedScene" uid="uid://cgwuaqnkxrjk5" path="res://scenes/alexplayer.tscn" id="3_gldc4"]
-[ext_resource type="PackedScene" uid="uid://cofwgq5y3wfy3" path="res://scenes/enemyY.tscn" id="5_2klcf"]
-[ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="6_2lpho"]
+[ext_resource type="PackedScene" uid="uid://cbgk7r28jmn6s" path="res://scenes/enemyY.tscn" id="5_2klcf"]
+[ext_resource type="PackedScene" uid="uid://cs86vd7ulidus" path="res://scenes/UI.tscn" id="6_2lpho"]
 [ext_resource type="Texture2D" uid="uid://pto5kg16234r" path="res://assets/menubutton.png" id="8_jh32y"]
 [ext_resource type="PackedScene" uid="uid://cgtffdbbpefak" path="res://scenes/boss.tscn" id="9_be0no"]
 

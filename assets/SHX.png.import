@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhgpa845yc8xe"
-path="res://.godot/imported/SHX.png-f1c83dfebc228e9ee511c350a941c29b.ctex"
+path="res://.godot/imported/SHX.png-8147cf06d139ae10068cc6be017cc3e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/SHX.png"
-dest_files=["res://.godot/imported/SHX.png-f1c83dfebc228e9ee511c350a941c29b.ctex"]
+source_file="res://assets/SHX.png"
+dest_files=["res://.godot/imported/SHX.png-8147cf06d139ae10068cc6be017cc3e9.ctex"]
 
 [params]
 
