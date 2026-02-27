@@ -6,6 +6,7 @@ const DASH_SPEED = 1200.0
 var health = 0
 var can_take_damage: bool = true
 
+var reset_position: Vector2
 var dashing = false
 var can_dash = true
 @onready var healthbar = $CanvasLayer/Node2D/HealthBar
@@ -15,6 +16,7 @@ var can_dash = true
 func _ready():
 	health = 5
 	healthbar.init_health(health)
+	# Dette fikser "is_object_stored"-feilen for alle objekter
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity
@@ -70,3 +72,6 @@ func _on_dash_again_timer_timeout() -> void:
 # Invincibility ends, allow damage again
 func _on_timer_timeout() -> void:
 	can_take_damage = true   
+func on_enter():
+	# Position for kill system. Assigned when entering new room (see Game.gd).
+	reset_position = position

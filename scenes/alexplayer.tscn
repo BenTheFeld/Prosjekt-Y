@@ -65,6 +65,7 @@ shape = SubResource("CapsuleShape2D_3vgc6")
 shape = SubResource("CapsuleShape2D_bjs4x")
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
 position = Vector2(7.6293945e-06, 0)
 scale = Vector2(2.4375, 2.71875)
 energy = 3.91

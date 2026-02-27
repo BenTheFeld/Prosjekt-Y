@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cf8uao6uqqnp7"]
+[gd_scene load_steps=35 format=4 uid="uid://cf8uao6uqqnp7"]
 
 [ext_resource type="Script" uid="uid://dum7iipmuf6y3" path="res://scripts/screenshake.gd" id="1_nakos"]
 [ext_resource type="Texture2D" uid="uid://bj2mdigjphphv" path="res://assets/ch_02_world_building_foundations/forgotten_forest_example_tileset.png" id="1_paxxb"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://cs86vd7ulidus" path="res://scenes/UI.tscn" id="6_2lpho"]
 [ext_resource type="Texture2D" uid="uid://pto5kg16234r" path="res://assets/menubutton.png" id="8_jh32y"]
 [ext_resource type="PackedScene" uid="uid://cgtffdbbpefak" path="res://scenes/boss.tscn" id="9_be0no"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="11_mlgqr"]
+[ext_resource type="Script" uid="uid://0u1nlyd1ld6o" path="res://SampleProject/Scripts/SavePoint.gd" id="12_wslke"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_be0no"]
 light_mode = 2
@@ -9591,6 +9593,9 @@ gradient = SubResource("Gradient_jh32y")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gw3fx"]
+radius = 32.0
+
 [node name="map" type="Node2D"]
 script = ExtResource("1_nakos")
 NOISE_SHAKE_SPEED = 15.0
@@ -9667,7 +9672,6 @@ tile_map_data = PackedByteArray("AAA1ANv/AQAQABsAAAA1ANz/AQAQABoAAAA1AN3/AQAQABs
 tile_set = SubResource("TileSet_jh32y")
 
 [node name="alexplayer" parent="." instance=ExtResource("3_gldc4")]
-position = Vector2(148, -5)
 
 [node name="Camera2D" type="Camera2D" parent="alexplayer"]
 zoom = Vector2(2, 2)
@@ -9700,3 +9704,36 @@ position = Vector2(-72, 1410)
 
 [node name="enemy" parent="." instance=ExtResource("5_2klcf")]
 position = Vector2(682, -224)
+
+[node name="RoomInstance" parent="." instance=ExtResource("11_mlgqr")]
+position = Vector2(-77, 1368)
+
+[node name="SavePoint" type="Area2D" parent="."]
+position = Vector2(335, -12)
+script = ExtResource("12_wslke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SavePoint"]
+shape = SubResource("CircleShape2D_gw3fx")
+
+[node name="Label" type="Label" parent="SavePoint"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -25.0
+offset_right = 29.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="enemy2" parent="." instance=ExtResource("5_2klcf")]
+position = Vector2(-363, 1441)
+
+[node name="enemy3" parent="." instance=ExtResource("5_2klcf")]
+position = Vector2(-291, 1454)

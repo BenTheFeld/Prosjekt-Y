@@ -16,7 +16,7 @@ func _ready() -> void:
 	noise.seed = rand.randi()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX  # Use Simplex noise
 	noise.frequency = 0.5
-
+	# Dette "lyser opp" ruten på kartet når spilleren går inn i rommet
 func apply_noise_shake() -> void:
 	shake_strength = NOISE_SHAKE_STRENGTH
 

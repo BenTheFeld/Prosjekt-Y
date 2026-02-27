@@ -15,12 +15,13 @@ ss2d/version="3.3.1"
 [application]
 
 config/name="Prosjekt Y"
-run/main_scene="uid://pu0aycys3k6c"
+run/main_scene="uid://cf8uao6uqqnp7"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 Global="*res://scripts/global.gd"
+MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
 [editor]
 
@@ -29,7 +30,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/addons/MetroidvaniaSystem/plugin.cfg")
+enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/SS2/addons/rmsmartshape/plugin.cfg")
 
 [input]
 
@@ -74,3 +75,4 @@ jump={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
