@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc3k523ruvkps"]
+
+[ext_resource type="Script" path="res://scripts/alexplayer.gd" id="1_jj23w"]
+[ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
+[ext_resource type="Texture2D" uid="uid://dufaecv07e3rn" path="res://assets/HeartsC.png" id="3_8wtvl"]
+[ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vgc6"]
+radius = 8.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bjs4x"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_0cso3"]
+offsets = PackedFloat32Array(0.016587678, 0.7867299)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8wtvl"]
+gradient = SubResource("Gradient_0cso3")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="alexplayer" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_jj23w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
+scale = Vector2(0.0703125, 0.0703125)
+texture = ExtResource("2_qt07y")
+
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="dash_again_timer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer"]
+position = Vector2(237, 102)
+scale = Vector2(2.3024964, 2.4299989)
+
+[node name="YehoooNy" type="Sprite2D" parent="CanvasLayer/Node2D"]
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("3_8wtvl")
+
+[node name="HealthBar" parent="CanvasLayer/Node2D" instance=ExtResource("3_bjs4x")]
+z_index = -2
+offset_left = -77.74171
+offset_top = -13.333339
+offset_right = 78.17602
+offset_bottom = 12.940419
+value = 40.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["player"]]
+shape = SubResource("CapsuleShape2D_3vgc6")
+
+[node name="groundcollider" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_bjs4x")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(7.6293945e-06, 0)
+scale = Vector2(2.4375, 2.71875)
+energy = 3.91
+texture = SubResource("GradientTexture2D_8wtvl")
+texture_scale = 1.7
+
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
