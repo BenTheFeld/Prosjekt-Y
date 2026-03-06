@@ -17,7 +17,6 @@ signal room_loaded
 ## Sets the node to be tracked by this class. When player was assigned, [method MetroidvaniaSystem.set_player_position] will be called automatically at the end of every physics frame, updating the player position.
 func set_player(p_player: Node2D):
 	player = p_player
-	player.get_tree().physics_frame.connect(_physics_tick, CONNECT_DEFERRED)
 
 ## Adds a module. [param module_name] is either a file located in [code]Template/Scripts/Modules[/code] or a full path to the script. The script must extend [code]MetSysModule.gd[/code]. Returns a module object that can be customized if needed.
 func add_module(module_name: String) -> MetSysModule:

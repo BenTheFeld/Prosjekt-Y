@@ -1,15 +1,15 @@
 [gd_scene load_steps=35 format=4 uid="uid://cf8uao6uqqnp7"]
 
-[ext_resource type="Script" uid="uid://dum7iipmuf6y3" path="res://scripts/screenshake.gd" id="1_nakos"]
+[ext_resource type="Script" path="res://scripts/screenshake.gd" id="1_nakos"]
 [ext_resource type="Texture2D" uid="uid://bj2mdigjphphv" path="res://assets/ch_02_world_building_foundations/forgotten_forest_example_tileset.png" id="1_paxxb"]
 [ext_resource type="Texture2D" uid="uid://ok3b26ui2uu" path="res://assets/ch_02_world_building_foundations/BG.png" id="2_be0no"]
 [ext_resource type="Texture2D" uid="uid://dq710yoqtlc3y" path="res://assets/ch_02_world_building_foundations/autotile_template.png" id="2_gldc4"]
 [ext_resource type="Texture2D" uid="uid://cb47r6s0jwriq" path="res://assets/tileset.png" id="3_0cso3"]
 [ext_resource type="PackedScene" uid="uid://cgwuaqnkxrjk5" path="res://scenes/alexplayer.tscn" id="3_gldc4"]
-[ext_resource type="PackedScene" uid="uid://cbgk7r28jmn6s" path="res://scenes/enemyY.tscn" id="5_2klcf"]
+[ext_resource type="PackedScene" uid="uid://tx8s108qyk0l" path="res://scenes/enemyY.tscn" id="5_2klcf"]
 [ext_resource type="PackedScene" uid="uid://cs86vd7ulidus" path="res://scenes/UI.tscn" id="6_2lpho"]
 [ext_resource type="Texture2D" uid="uid://pto5kg16234r" path="res://assets/menubutton.png" id="8_jh32y"]
-[ext_resource type="PackedScene" uid="uid://cgtffdbbpefak" path="res://scenes/boss.tscn" id="9_be0no"]
+[ext_resource type="PackedScene" path="res://scenes/boss.tscn" id="9_be0no"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="11_mlgqr"]
 [ext_resource type="Script" uid="uid://0u1nlyd1ld6o" path="res://SampleProject/Scripts/SavePoint.gd" id="12_wslke"]
 
@@ -9707,6 +9707,7 @@ position = Vector2(682, -224)
 
 [node name="RoomInstance" parent="." instance=ExtResource("11_mlgqr")]
 position = Vector2(-77, 1368)
+script = null
 
 [node name="SavePoint" type="Area2D" parent="."]
 position = Vector2(335, -12)

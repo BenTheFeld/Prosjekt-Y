@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgwuaqnkxrjk5"]
 
-[ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/alexplayer.gd" id="1_jj23w"]
+[ext_resource type="Script" path="res://scripts/alexplayer.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="2_qt07y"]
 [ext_resource type="Texture2D" uid="uid://dufaecv07e3rn" path="res://assets/HeartsC.png" id="3_8wtvl"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
