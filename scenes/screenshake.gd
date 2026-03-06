@@ -4,9 +4,9 @@ extends Node2D
 @export var NOISE_SHAKE_STRENGTH: float = 10.0
 @export var SHAKE_DECAY_RATE: float = 5.0
 
-@onready var camera = $player/Camera2D
 @onready var rand = RandomNumberGenerator.new()
 @onready var noise = FastNoiseLite.new()
+@onready var camera: Camera2D = $"../player/Camera2D"
 
 var noise_i: float = 0.0
 var shake_strength: float = 1.0
