@@ -19,11 +19,14 @@ var jump_amount = MAX_JUMP_AMOUNT
 var dash_ready = true
 var walljump_ready = false
 var walljumping = false
+var can_shoot = true
 @onready var healthbar = $CanvasLayer/HealthBar
 @onready var damage_timer = $damage_timer
-@onready var coyote_timer: Timer = $coyote_timer
+@onready var coyote_timer: Timer = $Timers/coyote_timer
 @onready var character_sprite: Sprite2D = $character_sprite
 @onready var hands_sprite: Sprite2D = $character_sprite/hands_sprite
+@onready var shoot_timer: Timer = $Timers/shoot_timer
+
 
 func _ready():
 	health = 100
@@ -61,9 +64,8 @@ func _physics_process(delta: float) -> void:
 		velocity = mouse_direction * DASH_SPEED
 		dashing = true
 		can_dash = false
-		$dash_duration_timer.start()
-		$dash_cooldown_timer.start()
-		
+		$Timers/dash_duration_timer.start()
+		$Timers/dash_cooldown_timer.start()
 	# Handle jump.
 	
 	#saves if the player was on the floor or not in the last frame
@@ -72,6 +74,9 @@ func _physics_process(delta: float) -> void:
 	was_on_wall = is_on_wall_only()
 	
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("attack"):
+		pass
 	
 	#resets jump status after landing in the floor
 	if is_on_floor():
@@ -115,6 +120,11 @@ func _physics_process(delta: float) -> void:
 	if !is_on_floor() and was_on_floor and !jumping:
 		coyote = true
 		coyote_timer.start()
+		
+func start_shoot_cooldown():
+	can_shoot = false
+	await shoot_timer.timeout
+	can_shoot = true
 	
 func take_damage(amount):
 	health = max(0, health - amount)

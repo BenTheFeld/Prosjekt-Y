@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgwuaqnkxrjk5"]
+[gd_scene load_steps=8 format=3 uid="uid://cgwuaqnkxrjk5"]
 
 [ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/player.gd" id="1_jj23w"]
 [ext_resource type="Texture2D" uid="uid://caaba16bxvv5o" path="res://assets/ch_02_world_building_foundations/level_bounds.svg" id="2_8wtvl"]
+[ext_resource type="PackedScene" uid="uid://cnxfs654emsyl" path="res://scenes/weapon.tscn" id="2_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://b1v8jgn8dexxt" path="res://assets/ch_02_world_building_foundations/level_transition.svg" id="3_8wtvl"]
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
 
@@ -14,6 +15,8 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_jj23w")
 
+[node name="weapon" parent="." instance=ExtResource("2_qlg0r")]
+
 [node name="character_sprite" type="Sprite2D" parent="."]
 position = Vector2(3.5762787e-07, 0)
 scale = Vector2(1.25, 1.96875)
@@ -22,12 +25,6 @@ texture = ExtResource("2_8wtvl")
 [node name="hands_sprite" type="Sprite2D" parent="character_sprite"]
 scale = Vector2(0.8, 0.45)
 texture = ExtResource("3_8wtvl")
-
-[node name="dash_duration_timer" type="Timer" parent="."]
-wait_time = 0.3
-
-[node name="dash_cooldown_timer" type="Timer" parent="."]
-wait_time = 0.7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -48,11 +45,21 @@ shape = SubResource("CapsuleShape2D_3vgc6")
 visible = false
 shape = SubResource("CapsuleShape2D_bjs4x")
 
-[node name="coyote_timer" type="Timer" parent="."]
+[node name="Timers" type="Node" parent="."]
+
+[node name="coyote_timer" type="Timer" parent="Timers"]
 wait_time = 0.3
 one_shot = true
 
-[connection signal="timeout" from="dash_duration_timer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="dash_cooldown_timer" to="." method="_on_dash_again_timer_timeout"]
+[node name="dash_duration_timer" type="Timer" parent="Timers"]
+wait_time = 0.3
+
+[node name="dash_cooldown_timer" type="Timer" parent="Timers"]
+wait_time = 0.7
+
+[node name="shoot_timer" type="Timer" parent="Timers"]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="timeout" from="coyote_timer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Timers/coyote_timer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Timers/dash_duration_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Timers/dash_cooldown_timer" to="." method="_on_dash_again_timer_timeout"]
