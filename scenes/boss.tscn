@@ -1,21 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgtffdbbpefak"]
+[gd_scene load_steps=10 format=3 uid="uid://csxeqa5ojd88m"]
 
 [ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="1_dlmty"]
-[ext_resource type="Texture2D" uid="uid://dax23cibc56vw" path="res://assets/ch_02_world_building_foundations/light_stream.jpg" id="1_jncid"]
 [ext_resource type="Script" uid="uid://jcdk03dn0asj" path="res://scripts/bossMovement.gd" id="1_qnbj4"]
 [ext_resource type="FontFile" uid="uid://bjmq75dgsuc47" path="res://assets/pixel_3-kopi/pixel.ttf" id="2_neq0i"]
+[ext_resource type="Texture2D" uid="uid://yj35vytd27a" path="res://addons/SS2/SprislimeBoss.png" id="2_r3bxh"]
 [ext_resource type="Script" path="res://scripts/boss_health.gd" id="3_r3bxh"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_neq0i"]
-radius = 22.0
-height = 86.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdgk"]
+size = Vector2(532, 514)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r3bxh"]
-radius = 21.0
-height = 84.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsl3t"]
+size = Vector2(385, 492)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3bxh"]
-size = Vector2(312, 282)
+size = Vector2(1980, 1158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqpjq"]
+size = Vector2(1042, 773)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -25,11 +26,12 @@ script = ExtResource("1_qnbj4")
 [node name="Area2D" type="Area2D" parent="." groups=["enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["enemy"]]
-shape = SubResource("CapsuleShape2D_neq0i")
+position = Vector2(0, -19)
+shape = SubResource("RectangleShape2D_2cdgk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1796875, 0.171875)
-texture = ExtResource("1_jncid")
+scale = Vector2(2.36, 2.36)
+texture = ExtResource("2_r3bxh")
 script = ExtResource("3_r3bxh")
 
 [node name="RayCast2D" type="RayCast2D" parent="Sprite2D"]
@@ -40,18 +42,32 @@ collision_mask = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="Sprite2D"]
 
 [node name="HealthBar" parent="Sprite2D/CanvasLayer" instance=ExtResource("1_dlmty")]
-offset_left = 291.0
-offset_top = 540.0
-offset_right = 461.93027
-offset_bottom = 549.04254
-scale = Vector2(3.7599998, 3.7599998)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -678.9651
+offset_top = -235.04248
+offset_right = -508.0349
+offset_bottom = -226.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(7.882615, 7.882615)
 
 [node name="Label" type="Label" parent="Sprite2D/CanvasLayer"]
-offset_left = 280.0
-offset_top = 457.99997
-offset_right = 609.0
-offset_bottom = 487.99997
-scale = Vector2(2.3200002, 2.3200002)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -699.9999
+offset_top = -428.0
+offset_right = -370.99988
+offset_bottom = -398.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(4.86371, 4.86371)
 theme_override_fonts/font = ExtResource("2_neq0i")
 text = "BIG BOSS"
 
@@ -59,13 +75,23 @@ text = "BIG BOSS"
 wait_time = 2.5
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_r3bxh")
+[node name="Ground" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -25)
+shape = SubResource("RectangleShape2D_qsl3t")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Agro" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Agro"]
 shape = SubResource("RectangleShape2D_r3bxh")
 
+[node name="Close Attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Close Attack"]
+position = Vector2(0, -122.5)
+scale = Vector2(1, 1.0043384)
+shape = SubResource("RectangleShape2D_wqpjq")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Agro" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_entered" from="Close Attack" to="." method="_on_close_attack_area_entered"]
+[connection signal="area_exited" from="Close Attack" to="." method="_on_close_attack_area_exited"]

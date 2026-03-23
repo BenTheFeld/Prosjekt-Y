@@ -23,6 +23,12 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 Global="*res://scripts/global.gd"
 MetSys="*res://addons/MetroidvaniaSystem/Nodes/Singleton.tscn"
 
+[display]
+
+window/size/viewport_width=4608
+window/size/viewport_height=2592
+window/size/mode=3
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

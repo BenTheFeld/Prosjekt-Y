@@ -1,15 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dskrjah4nspta"]
+[gd_scene load_steps=8 format=3 uid="uid://0oaghqatugtu"]
 
-[ext_resource type="Texture2D" uid="uid://dtqvl88ipkvbf" path="res://assets/FBDNY.png" id="1_6ienu"]
-[ext_resource type="Script" path="res://scripts/boss_projectile.gd" id="2_2n0ct"]
-[ext_resource type="Texture2D" uid="uid://bhgpa845yc8xe" path="res://assets/SHX.png" id="3_2n0ct"]
+[ext_resource type="Texture2D" uid="uid://dtqvl88ipkvbf" path="res://assets/FBDNY.png" id="1_o866t"]
+[ext_resource type="Script" path="res://scripts/boss_projectile.gd" id="2_kjpqi"]
+[ext_resource type="Texture2D" uid="uid://bhgpa845yc8xe" path="res://assets/SHX.png" id="3_23p0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fnfp1"]
-atlas = ExtResource("3_2n0ct")
+atlas = ExtResource("3_23p0h")
 region = Rect2(0, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vukqs"]
-atlas = ExtResource("3_2n0ct")
+atlas = ExtResource("3_23p0h")
 region = Rect2(24, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5fku"]
@@ -31,16 +31,17 @@ radius = 8.0
 height = 16.0
 
 [node name="projectile" type="Sprite2D" groups=["enemy", "projectile"]]
-scale = Vector2(3.79, 3.79)
-texture = ExtResource("1_6ienu")
-script = ExtResource("2_2n0ct")
-speed = 1000
-shootRange = 1500
+scale = Vector2(7.03, 7.03)
+texture = ExtResource("1_o866t")
+script = ExtResource("2_kjpqi")
+speed = 1200
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
 sprite_frames = SubResource("SpriteFrames_c5fku")
 autoplay = "default"
-frame_progress = 0.4568516
+frame = 1
+frame_progress = 0.5011202
 
 [node name="Area2D" type="Area2D" parent="." groups=["enemy", "projectile"]]
 

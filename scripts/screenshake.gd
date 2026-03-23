@@ -8,6 +8,9 @@ extends Node2D
 @onready var rand = RandomNumberGenerator.new()
 @onready var noise = FastNoiseLite.new()
 
+
+
+
 var noise_i: float = 0.0
 var shake_strength: float = 1.0
 

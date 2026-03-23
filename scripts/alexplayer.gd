@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const DASH_SPEED = 1200.0
+const SPEED = 600.0
+const JUMP_VELOCITY = -800.0
+const DASH_SPEED = 2200.0
 var health = 0
 var can_take_damage: bool = true
 
