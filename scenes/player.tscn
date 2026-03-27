@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 [gd_scene load_steps=2 format=3 uid="uid://qa3ne4amnu1l"]
 
 [sub_resource type="GDScript" id="GDScript_u8vuu"]
 script/source = "extends Node2D
+=======
+[gd_scene load_steps=8 format=3 uid="uid://cgwuaqnkxrjk5"]
+
+[ext_resource type="Script" uid="uid://b6hket5bpekmw" path="res://scripts/player.gd" id="1_jj23w"]
+[ext_resource type="Texture2D" uid="uid://caaba16bxvv5o" path="res://assets/ch_02_world_building_foundations/level_bounds.svg" id="2_8wtvl"]
+[ext_resource type="PackedScene" uid="uid://cnxfs654emsyl" path="res://scenes/weapon.tscn" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://b1v8jgn8dexxt" path="res://assets/ch_02_world_building_foundations/level_transition.svg" id="3_8wtvl"]
+[ext_resource type="PackedScene" uid="uid://c77ancc8044hp" path="res://scenes/healthbarY.tscn" id="3_bjs4x"]
+>>>>>>> combat
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,6 +19,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
+<<<<<<< HEAD
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	print(\"bob\")
@@ -16,3 +27,53 @@ func _process(delta: float) -> void:
 
 [node name="benjamin" type="Node2D"]
 script = SubResource("GDScript_u8vuu")
+=======
+[node name="weapon" parent="." instance=ExtResource("2_qlg0r")]
+
+[node name="character_sprite" type="Sprite2D" parent="."]
+position = Vector2(3.5762787e-07, 0)
+scale = Vector2(1.25, 1.96875)
+texture = ExtResource("2_8wtvl")
+
+[node name="hands_sprite" type="Sprite2D" parent="character_sprite"]
+scale = Vector2(0.8, 0.45)
+texture = ExtResource("3_8wtvl")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("3_bjs4x")]
+offset_left = 117.0
+offset_top = 111.0
+offset_right = 357.0
+offset_bottom = 127.0
+
+[node name="damage_timer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_3vgc6")
+
+[node name="groundcollider" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CapsuleShape2D_bjs4x")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="coyote_timer" type="Timer" parent="Timers"]
+wait_time = 0.3
+one_shot = true
+
+[node name="dash_duration_timer" type="Timer" parent="Timers"]
+wait_time = 0.3
+
+[node name="dash_cooldown_timer" type="Timer" parent="Timers"]
+wait_time = 0.7
+
+[node name="shoot_timer" type="Timer" parent="Timers"]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timers/coyote_timer" to="." method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="Timers/dash_duration_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="Timers/dash_cooldown_timer" to="." method="_on_dash_again_timer_timeout"]
+>>>>>>> combat

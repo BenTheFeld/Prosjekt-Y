@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnxfs654emsyl"]
+
+[ext_resource type="Script" uid="uid://f138nqo8s3tx" path="res://scripts/weapon.gd" id="1_uxn4k"]
+[ext_resource type="Texture2D" uid="uid://b1v8jgn8dexxt" path="res://assets/ch_02_world_building_foundations/level_transition.svg" id="1_xasec"]
+
+[node name="weapon" type="Node2D"]
+script = ExtResource("1_uxn4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.376086, -0.0054838383)
+rotation = -3.1424527
+scale = Vector2(1.7970113, 0.5708116)
+texture = ExtResource("1_xasec")

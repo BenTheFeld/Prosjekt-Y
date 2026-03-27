@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://de1xecdt8n1ej"]
+
+[ext_resource type="Texture2D" uid="uid://caaba16bxvv5o" path="res://assets/ch_02_world_building_foundations/level_bounds.svg" id="1_mkf8s"]
+[ext_resource type="Script" uid="uid://cgb8haatxocu4" path="res://scripts/bullet.gd" id="1_y25gk"]
+
+[node name="bullet" type="Node2D"]
+script = ExtResource("1_y25gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mkf8s")
+
+[node name="Area2D" type="Area2D" parent="."]

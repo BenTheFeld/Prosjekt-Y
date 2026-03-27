@@ -15,7 +15,7 @@ ss2d/version="3.3.1"
 [application]
 
 config/name="Prosjekt Y"
-run/main_scene="uid://dc86ae7i881jq"
+run/main_scene="uid://c0l20wipm6hqj"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
@@ -30,7 +30,11 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
+<<<<<<< HEAD
 enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/SS2/addons/rmsmartshape/plugin.cfg")
+=======
+enabled=PackedStringArray()
+>>>>>>> combat
 
 [input]
 
@@ -64,6 +68,11 @@ jump={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 ]
 }
+attack={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -73,7 +82,11 @@ jump={
 [physics]
 
 2d/physics_engine="GodotPhysics2D"
+<<<<<<< HEAD
 2d/default_gravity=600.0
+=======
+2d/default_gravity=27.0
+>>>>>>> combat
 2d/defaults/default_clear_color=Color(1, 1, 1, 1)
 <<<<<<<HEAD2d/default_gravity=500.0
 
