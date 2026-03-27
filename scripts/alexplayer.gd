@@ -13,7 +13,7 @@ var can_dash = true
 @onready var timer = $Timer 
 @onready var screenShake = get_parent()
 
-func _ready():
+func _ready(): 
 	health = 5
 	healthbar.init_health(health)
 	# Dette fikser "is_object_stored"-feilen for alle objekter
