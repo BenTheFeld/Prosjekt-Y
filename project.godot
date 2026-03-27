@@ -30,11 +30,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-<<<<<<< HEAD
 enabled=PackedStringArray("res://addons/MetroidvaniaSystem/EditorExtension/plugin.cfg", "res://addons/MetroidvaniaSystem/plugin.cfg", "res://addons/SS2/addons/rmsmartshape/plugin.cfg")
-=======
-enabled=PackedStringArray()
->>>>>>> combat
 
 [input]
 
@@ -82,11 +78,7 @@ attack={
 [physics]
 
 2d/physics_engine="GodotPhysics2D"
-<<<<<<< HEAD
-2d/default_gravity=600.0
-=======
 2d/default_gravity=27.0
->>>>>>> combat
 2d/defaults/default_clear_color=Color(1, 1, 1, 1)
 <<<<<<<HEAD2d/default_gravity=500.0
 

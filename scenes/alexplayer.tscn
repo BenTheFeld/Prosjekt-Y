@@ -28,10 +28,7 @@ fill_from = Vector2(0.5, 0.5)
 [node name="alexplayer" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 3
-<<<<<<< HEAD
 script = ExtResource("1_jj23w")
-=======
->>>>>>> combat
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["player"]]
 scale = Vector2(0.0703125, 0.0703125)
